@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <ListInstance Title="CorpDirConfigurationList" OnQuickLaunch="FALSE" TemplateType="100" Url="Lists/CorpDirConfigurationList" Description="Corporate Directory Configuration List" Hidden="TRUE"></ListInstance>
+</Elements>

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="Display Templates" Path="Display Templates" Url="_catalogs/masterpage/Display Templates" RootWebOnly="TRUE">
+    <File Path="Search\Item_Person_FPS.html" Url="Search/Item_Person_FPS.html" Level="Draft" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+  </Module>
+</Elements>

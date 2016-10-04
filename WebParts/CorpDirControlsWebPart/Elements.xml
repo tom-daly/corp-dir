@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="CorpDirControlsWebPart" Path="CorpDirControlsWebPart" List="113" Url="_catalogs/wp" RootWebOnly="TRUE">
+    <File Path="CorpDirControlsWebPart.dwp" Url="CorpDirControlsWebPart.dwp" ReplaceContent="TRUE" Level="Published" Type="GhostableInLibrary">
+      <Property Name="Group" Value="Custom"></Property>
+    </File>
+  </Module>
+</Elements>

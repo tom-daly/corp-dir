@@ -1,0 +1,64 @@
+@import 'helpers';
+
+.corp-dir-webpart {
+    position: relative;
+
+    .corp-dir-config-toggle {
+        position: absolute;
+        top: 2px;
+        right: 5px;
+        display: inline-block;
+
+        > a {
+            background-image: url('../images/cog.png');
+            background-repeat: no-repeat;
+            width: 24px;
+            height: 24px;
+            display: block;
+        }
+    }
+
+    .corp-dir-config-panel {
+        padding: 20px;
+        border: 1px solid #eee;
+        @include border-radius(5px);
+
+        .corp-dir-config-properties {
+            display: table;
+
+            .corp-dir-property-group {
+                display: table-row;
+
+                .corp-dir-property-label, corp-dir-property-value {
+                    display: table-cell;
+                    padding: 15px 15px 15px 0;
+                }
+            }
+        }
+
+        .corp-dir-config-panel-controls {
+            input {
+                margin: 0;
+            }
+        }
+
+        &.opened {
+            + .corp-dir-config-toggle {
+                top: 5px;
+            }
+        }
+    }
+
+    .corp-dir-config-panel-message {
+        padding: 10px 0;
+        font-style: italic;
+
+        &[type="success"] {
+            color: $green;
+        }
+
+        &[type="error"] {
+            color: $red;
+        }
+    }
+}

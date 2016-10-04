@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="Style Library" Path="Style Library" Url="Style Library">
+    <!-- CSS -->
+    <File Path="corp-dir\css\default.css.map" Url="corp-dir/css/default.css.map" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="corp-dir\css\default.min.css" Url="corp-dir/css/default.min.css" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <!-- JavaScript -->
+    <File Path="corp-dir\js\corp-dir.min.js" Url="corp-dir/js/corp-dir.min.js" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="corp-dir\js\corp-dir.min.js.map" Url="corp-dir/js/corp-dir.min.js.map" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary" />    
+    <!-- Images -->
+    <File Path="corp-dir\images\cog.png" Url="corp-dir/images/cog.png" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="corp-dir\images\feature-logo.png" Url="corp-dir/images/feature-logo.png" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <!-- Vendor -->
+    <File Path="corp-dir\vendor\vendor.min.js" Url="corp-dir/vendor/vendor.min.js" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary"  />
+    <File Path="corp-dir\vendor\vendor.min.js.map" Url="corp-dir/vendor/vendor.min.js.map" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary"  />
+  </Module>
+</Elements>

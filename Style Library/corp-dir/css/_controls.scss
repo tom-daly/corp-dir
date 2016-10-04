@@ -1,0 +1,25 @@
+@import 'colors';
+
+.corp-dir-controls {
+    overflow: hidden;
+    margin: 10px 0;
+    padding-right: 30px;
+
+    .letter {
+        float: left;
+        min-width: 16px;
+        text-align: center;
+        padding: 6px 10px;
+        cursor: pointer;
+        background-color: $primaryColor;
+        border-color: $primaryColor;
+        color: #fff;
+        text-transform: uppercase;
+        margin: 0 10px 5px 0;
+
+        &:hover, &.active {
+            background-color: $secondaryColor;
+            border-color: $secondaryColor;
+        }
+    }
+}

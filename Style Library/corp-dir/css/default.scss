@@ -1,0 +1,15 @@
+@import 'helpers';
+@import 'controls';
+@import 'results';
+@import 'config';
+
+//feature log
+img[alt='[corp-dir-feature-logo]'] {
+    display: block;
+    @include box-sizing(border-box);
+    background-image: url('../images/feature-logo.png');
+    background-repeat: no-repeat;
+    width: 64px; /* Width of new image */
+    height: 64px; /* Height of new image */
+    padding-left: 64px; /* Equal to width of new image */
+}

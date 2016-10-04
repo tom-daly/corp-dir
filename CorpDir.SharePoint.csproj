@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{929B8A59-7914-42D4-BB7D-84479C06DB8C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CorpDir.SharePoint</RootNamespace>
+    <AssemblyName>CorpDir.SharePoint</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetOfficeVersion>15.0</TargetOfficeVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <IncludeAssemblyInPackage>False</IncludeAssemblyInPackage>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.SharePoint" />
+    <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ContentTypes\CorpDirConfigurationContentType\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{9748f121-7b59-4104-9037-53fba2c91a42}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\CorpDirConfigurationList\CorpDirConfigurationListInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{14d3a307-ef87-4db3-ad87-2ecaf653439e}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\CorpDirConfigurationList\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{3867e178-7b9b-4868-970c-cb6c7c37d5a3}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteColumns\CorpDirSiteColumns\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{8fd5117f-c9c1-4c07-9736-6bf0e5d0476b}</SharePointProjectItemId>
+    </None>
+    <None Include="Style Library\corp-dir\css\_helpers.scss" />
+    <None Include="Style Library\corp-dir\css\_config.scss" />
+    <None Include="Style Library\corp-dir\css\_results.scss" />
+    <None Include="Style Library\corp-dir\css\_colors.scss" />
+    <None Include="Style Library\corp-dir\css\_controls.scss" />
+    <None Include="Style Library\corp-dir\js\corp-dir.js.bundle" />
+    <None Include="Style Library\corp-dir\js\corp-dir.min.js.map">
+      <DependentUpon>corp-dir.min.js</DependentUpon>
+    </None>
+    <None Include="Style Library\corp-dir\vendor\vendor.js.bundle" />
+    <None Include="Style Library\corp-dir\vendor\vendor.min.js.map">
+      <DependentUpon>vendor.min.js</DependentUpon>
+    </None>
+    <None Include="WebParts\CorpDirControlsWebPart\CorpDirControlsWebPart.dwp" />
+    <None Include="WebParts\CorpDirControlsWebPart\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{64fdccbd-95c9-42ee-ae5f-5974dce53f7f}</SharePointProjectItemId>
+    </None>
+    <None Include="Elements\CustomActions\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{c05f1897-3d66-4db5-bcfc-96d01529bc66}</SharePointProjectItemId>
+    </None>
+    <None Include="Display Templates\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{1c728ed7-74fa-4b22-9345-c90d932ef392}</SharePointProjectItemId>
+    </None>
+    <None Include="Features\CorpDir.SharePoint\CorpDir.SharePoint.feature">
+      <FeatureId>{3ff7efcf-5eaa-4230-8c19-d55db2974b28}</FeatureId>
+    </None>
+    <None Include="Package\Package.package">
+      <PackageId>{d315534f-2149-4d57-ad87-e2e760a907aa}</PackageId>
+    </None>
+    <None Include="Package\Package.Template.xml">
+      <DependentUpon>Package.package</DependentUpon>
+    </None>
+    <None Include="Style Library\corp-dir\css\default.css.map">
+      <DependentUpon>default.scss</DependentUpon>
+    </None>
+    <None Include="Style Library\corp-dir\css\default.scss" />
+    <None Include="Style Library\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{fecce85b-bfcf-4ac4-b4cc-2ac8ffd3166c}</SharePointProjectItemId>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="ContentTypes\CorpDirConfigurationContentType\Elements.xml" />
+    <Content Include="Lists\CorpDirConfigurationList\CorpDirConfigurationListInstance\Elements.xml" />
+    <Content Include="Lists\CorpDirConfigurationList\Elements.xml" />
+    <Content Include="Lists\CorpDirConfigurationList\Schema.xml" />
+    <Content Include="SiteColumns\CorpDirSiteColumns\Elements.xml" />
+    <Content Include="Style Library\corp-dir\images\cog.png" />
+    <Content Include="Style Library\corp-dir\images\feature-logo.png" />
+    <Content Include="Style Library\corp-dir\js\corp-dir-common.js" />
+    <Content Include="Style Library\corp-dir\js\corp-dir-config-panel.js" />
+    <Content Include="Style Library\corp-dir\js\corp-dir-controls.js" />
+    <Content Include="Style Library\corp-dir\js\corp-dir.js">
+      <DependentUpon>corp-dir.js.bundle</DependentUpon>
+    </Content>
+    <Content Include="Style Library\corp-dir\js\corp-dir.min.js">
+      <DependentUpon>corp-dir.js</DependentUpon>
+    </Content>
+    <Content Include="Style Library\corp-dir\vendor\jQuery\jquery-1.12.4.min.js" />
+    <Content Include="Style Library\corp-dir\vendor\vendor.js">
+      <DependentUpon>vendor.js.bundle</DependentUpon>
+    </Content>
+    <Content Include="Style Library\corp-dir\vendor\vendor.min.js">
+      <DependentUpon>vendor.js</DependentUpon>
+    </Content>
+    <Content Include="Style Library\corp-dir\vendor\jscolor\jscolor.js" />
+    <Content Include="Style Library\corp-dir\vendor\jscolor\jscolor.min.js" />
+    <Content Include="WebParts\CorpDirControlsWebPart\Elements.xml" />
+    <Content Include="Elements\CustomActions\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Display Templates\Elements.xml" />
+    <Content Include="Features\CorpDir.SharePoint\CorpDir.SharePoint.Template.xml">
+      <DependentUpon>CorpDir.SharePoint.feature</DependentUpon>
+    </Content>
+    <Content Include="Display Templates\Search\Item_Person_FPS.html" />
+    <Content Include="Style Library\corp-dir\css\default.css">
+      <DependentUpon>default.scss</DependentUpon>
+    </Content>
+    <Content Include="Style Library\corp-dir\css\default.min.css">
+      <DependentUpon>default.scss</DependentUpon>
+    </Content>
+    <Content Include="Style Library\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
+</Project>

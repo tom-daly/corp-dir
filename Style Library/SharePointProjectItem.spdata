@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectItem Type="Microsoft.VisualStudio.SharePoint.Module" DefaultFile="Elements.xml" SupportedTrustLevels="All" SupportedDeploymentScopes="Web, Site" xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel">
+  <Files>
+    <ProjectItemFile Source="Elements.xml" Target="Style Library\" Type="ElementManifest" />
+    <ProjectItemFile Source="corp-dir\css\default.scss" Target="Style Library\corp-dir\css\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\css\default.css" Target="Style Library\corp-dir\css\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\css\default.css.map" Target="Style Library\corp-dir\css\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\css\default.min.css" Target="Style Library\corp-dir\css\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\css\_controls.scss" Target="Style Library\corp-dir\css\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\css\_colors.scss" Target="Style Library\corp-dir\css\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\css\_results.scss" Target="Style Library\corp-dir\css\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\css\_config.scss" Target="Style Library\corp-dir\css\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\images\cog.png" Target="Style Library\corp-dir\images\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\css\_helpers.scss" Target="Style Library\corp-dir\css\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\vendor\jQuery\jquery-1.12.4.min.js" Target="Style Library\corp-dir\vendor\jQuery\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\vendor\jscolor\jscolor.js" Target="Style Library\corp-dir\vendor\jscolor\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\vendor\jscolor\jscolor.min.js" Target="Style Library\corp-dir\vendor\jscolor\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\js\corp-dir-common.js" Target="Style Library\corp-dir\js\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\js\corp-dir-config-panel.js" Target="Style Library\corp-dir\js\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\js\corp-dir-controls.js" Target="Style Library\corp-dir\js\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\images\feature-logo.png" Target="Style Library\corp-dir\images\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\js\corp-dir.js.bundle" Target="Style Library\corp-dir\js\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\js\corp-dir.js" Target="Style Library\corp-dir\js\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\js\corp-dir.min.js" Target="Style Library\corp-dir\js\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\js\corp-dir.min.js.map" Target="Style Library\corp-dir\js\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\vendor\vendor.js.bundle" Target="Style Library\corp-dir\vendor\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\vendor\vendor.js" Target="Style Library\corp-dir\vendor\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\vendor\vendor.min.js" Target="Style Library\corp-dir\vendor\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\vendor\vendor.min.js.map" Target="Style Library\corp-dir\vendor\" Type="ElementFile" />
+  </Files>
+</ProjectItem>

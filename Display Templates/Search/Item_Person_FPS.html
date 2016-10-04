@@ -1,0 +1,399 @@
+﻿<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"> 
+<head>
+<title>People Item (Custom)</title>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:TemplateHidden msdt:dt="string">0</mso:TemplateHidden>
+<mso:MasterPageDescription msdt:dt="string">Displays a result tailored for a person.</mso:MasterPageDescription>
+<mso:ContentTypeId msdt:dt="string">0x0101002039C03B61C64EC4A04F5361F385106603</mso:ContentTypeId>
+<mso:TargetControlType msdt:dt="string">;#SearchResults;#</mso:TargetControlType>
+<mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
+<mso:CrawlerXSLFile msdt:dt="string"></mso:CrawlerXSLFile>
+<mso:ManagedPropertyMapping msdt:dt="string">'WorkPhone':'WorkPhone','MobilePhone':'MobilePhone','AboutMe':'AboutMe','AccountName':'AccountName','BaseOfficeLocation':'BaseOfficeLocation','Department':'Department','HitHighlightedProperties':'HitHighlightedProperties','Interests':'Interests','JobTitle':'JobTitle','LastModifiedTime':'LastModifiedTime','Memberships':'Memberships','PastProjects':'PastProjects','Path':'Path','PictureURL':'PictureURL','PreferredName':'PreferredName','Responsibilities':'Responsibilities','Schools':'Schools','ServiceApplicationID':'ServiceApplicationID','SipAddress':'SipAddress','Skills':'Skills','UserProfile_GUID':'UserProfile_GUID','WorkEmail':'WorkEmail','WorkId':'WorkId','YomiDisplayName':'YomiDisplayName'</mso:ManagedPropertyMapping>
+<mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">http://test.schneck.com/sites/search/_catalogs/masterpage/Display Templates/Search/Item_Person_FPS.html, Conversion successful.</mso:HtmlDesignStatusAndPreview>
+<mso:HtmlDesignPreviewUrl msdt:dt="string"></mso:HtmlDesignPreviewUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+    <div id="Item_Person">
+<!--#_ 
+                    if(!$isNull(ctx.CurrentItem) && !$isNull(ctx.ClientControl)){
+                        var id = ctx.ClientControl.get_nextUniqueId();
+                        var itemId = id + Srch.U.Ids.item;
+                        var hoverId = id + Srch.U.Ids.hover;
+                        $setResultItem(itemId, ctx.CurrentItem);
+                        var container_id = id + "_peopleContainer";
+                        var hhProps = Srch.U.createXMLDocument("<root>" + ctx.CurrentItem.HitHighlightedProperties + "</root>");
+                        var encodedPath = $urlHtmlEncode(ctx.CurrentItem.Path);
+                        var has_pn = !$isEmptyString(ctx.CurrentItem.PreferredName);
+                        var has_sip = !$isEmptyString(ctx.CurrentItem.SipAddress);
+                        var has_email = !$isEmptyString(ctx.CurrentItem.WorkEmail);
+                        var has_jt = !$isEmptyString(ctx.CurrentItem.JobTitle);
+                        var has_dp = !$isEmptyString(ctx.CurrentItem.Department);
+                        var has_abme = !$isEmptyString(ctx.CurrentItem.AboutMe);
+                        var has_resp = !$isEmptyString(ctx.CurrentItem.Responsibilities);
+                        var has_pp = !$isEmptyString(ctx.CurrentItem.PastProjects);
+                        var has_ski = !$isEmptyString(ctx.CurrentItem.Skills);
+                        var has_sch = !$isEmptyString(ctx.CurrentItem.Schools);
+                        var has_int = !$isEmptyString(ctx.CurrentItem.Interests);
+                        var has_vlm = !$isEmptyString(ctx.CurrentItem.ProfileViewsLastMonth);
+                        var has_vlw = !$isEmptyString(ctx.CurrentItem.ProfileViewsLastWeek);
+                        var has_query = !$isEmptyString(ctx.CurrentItem.ProfileQueriesFoundYou); 
+                        var isSelfSrch = (has_vlm == true || has_vlw == true || has_query == true);
+                        var delimiter = "";
+                        var userPersonaId = $htmlEncode(id) + "_peopleUserPersona";
+                        var uSip = ctx.CurrentItem.SipAddress;
+                        var uEmail = ctx.CurrentItem.WorkEmail;
+                        var uName = ctx.CurrentItem.PreferredName;
+                        var uPicUrl = ctx.CurrentItem.PictureURL;
+                        var hoverUrl = "~sitecollection/_catalogs/masterpage/Display Templates/Search/Item_Person_HoverPanel.js";
+_#-->
+                        <div id="_#= $htmlEncode(container_id) =#_" class="ms-srch-people-outerContainer ms-srch-resultHover">
+                            <div id="_#= $htmlEncode(itemId) =#_" name="Item" class="ms-srch-people-item" onmouseover="EnsureScriptParams('SearchUI.js', 'HP.Init', event, '_#=$scriptEncode(itemId) =#_', '_#=$scriptEncode(hoverId) =#_', '_#=$scriptEncode(hoverUrl) =#_');" onmouseout="EnsureScriptParams('SearchUI.js', 'HP.Hide');">
+                            <div id="_#= $htmlEncode(hoverId) =#_" class="ms-srch-hover-outerContainer"></div>
+                                <div id="UserPersonaContainer">
+                                    <div id="UserPersona">
+                                        <div id="_#= userPersonaId =#_"></div>
+                                    </div>
+                                </div>
+                                <div id="UserInfoContainer">
+                                    <div id="ContactInfo">
+                                        <div id="NameField">
+<!--#_ 
+                                            var encodedName = (has_pn == true) ? $htmlEncode(ctx.CurrentItem.PreferredName) : $htmlEncode(ctx.CurrentItem.YomiDisplayName);
+                                            var displayName = Srch.U.getSingleHHXMLNodeValue(hhProps, "preferredname");
+                                            if ($isEmptyString(displayName)) { displayName = encodedName }
+_#-->
+                                            <div id="NameValue" class="ms-srch-ellipsis ms-textLarge">
+                                                <a clicktype="Result" id="NameFieldLink" href="_#= encodedPath =#_" title="_#= encodedName =#_">_#= displayName =#_</a>
+                                            </div>
+                                        </div>
+<!--#_ 
+                                        if(has_jt == true) {
+_#-->
+                                            <div id="JobTitleField">
+<!--#_ 
+                                                var encodedJtitle = $htmlEncode(ctx.CurrentItem.JobTitle);
+                                                var displayJtitle = Srch.U.getSingleHHXMLNodeValue(hhProps, "jobtitle");
+                                                if ($isEmptyString(displayJtitle)) { displayJtitle = encodedJtitle }
+_#--> 
+                                                <div id="JobTitleValue" class="ms-srch-ellipsis" title="_#= encodedJtitle =#_"> _#= displayJtitle =#_ </div>
+                                            </div>
+<!--#_ 
+                                        }
+_#-->
+<!--#_ 
+                                        if(has_dp == true) {
+_#-->
+                                            <div id="DepartmentField">
+<!--#_ 
+                                                var encodedDept = $htmlEncode(ctx.CurrentItem.Department);
+                                                var displayDept = Srch.U.getSingleHHXMLNodeValue(hhProps, "department");
+                                                if ($isEmptyString(displayDept)) { displayDept = encodedDept }
+_#--> 
+                                                <span class="label">Dept:</span><div id="DepartmentValue" class="ms-srch-ellipsis" title="_#= encodedDept =#_"> _#= displayDept =#_ </div>
+                                            </div>
+<!--#_ 
+                                        }
+_#-->
+
+<!--#_ 
+										var hasLocation = !$isEmptyString(ctx.CurrentItem.BaseOfficeLocation);
+                                        if(hasLocation == true) {
+_#-->
+                                            <div id="LocationField">
+<!--#_ 
+                                                var encodedLocation = $htmlEncode(ctx.CurrentItem.BaseOfficeLocation);
+                                                var displayLocation = Srch.U.getSingleHHXMLNodeValue(hhProps, "baseofficelocation");
+                                                if ($isEmptyString(displayLocation)) { displayLocation = encodedLocation }
+_#--> 
+                                                <span class="label">Office:</span><div id="LocationValue" class="ms-srch-ellipsis" title="_#= encodedLocation =#_"> _#= displayLocation =#_ </div>
+                                            </div>
+<!--#_ 
+                                        }
+_#-->
+
+<!--#_ 
+										var hasWorkPhone = !$isEmptyString(ctx.CurrentItem.WorkPhone);
+                                        if(hasWorkPhone == true) {
+_#-->
+                                            <div id="WorkPhoneField">
+<!--#_ 
+                                                var encodedWorkPhone = $htmlEncode(ctx.CurrentItem.WorkPhone);
+                                                var displayWorkPhone = Srch.U.getSingleHHXMLNodeValue(hhProps, "workphone");
+                                                if ($isEmptyString(displayWorkPhone)) { displayWorkPhone = encodedWorkPhone }
+_#--> 
+                                                <span class="label">Work Phone:</span><div id="WorkPhoneValue" class="ms-srch-ellipsis" title="_#= encodedWorkPhone =#_"> _#= displayWorkPhone =#_ </div>
+                                            </div>
+<!--#_ 
+                                        }
+_#-->
+
+
+<!--#_ 
+										var hasMobilePhone = !$isEmptyString(ctx.CurrentItem.MobilePhone);
+                                        if(hasMobilePhone == true) {
+_#-->
+                                            <div id="MobilePhoneField">
+<!--#_ 
+                                                var encodedMobilePhone = $htmlEncode(ctx.CurrentItem.MobilePhone);
+                                                var displayMobilePhone = Srch.U.getSingleHHXMLNodeValue(hhProps, "mobilePhone");
+                                                if ($isEmptyString(displayMobilePhone)) { displayMobilePhone = encodedMobilePhone }
+_#--> 
+                                                <span class="label">Mobile Phone:</span><div id="MobilePhoneValue" class="ms-srch-ellipsis" title="_#= encodedMobilePhone =#_"> _#= displayMobilePhone =#_ </div>
+                                            </div>
+<!--#_ 
+                                        }
+_#-->
+
+
+<!--#_ 
+										var hasWorkEmail = !$isEmptyString(ctx.CurrentItem.WorkEmail);
+                                        if(hasWorkEmail == true) {
+_#-->
+                                            <div id="WorkEmailField">
+<!--#_ 
+                                                var encodedWorkEmail = $htmlEncode(ctx.CurrentItem.WorkEmail);
+                                                var displayWorkEmail = Srch.U.getSingleHHXMLNodeValue(hhProps, "workemaile");
+                                                if ($isEmptyString(displayWorkEmail)) { displayWorkEmail = encodedWorkEmail }
+_#--> 
+                                                <span class="label"></span><div id="WorkEmailValue" class="ms-srch-ellipsis" title="_#= encodedWorkEmail =#_"><a href="mailto:_#= encodedWorkEmail =#_"> _#= displayWorkEmail =#_ </a></div>
+                                            </div>
+<!--#_ 
+                                        }
+_#-->
+
+
+                                    </div>
+<!--#_ 
+                                    if(has_resp == true || has_ski == true || has_pp == true || has_int == true || has_sch == true) {
+_#-->
+                                        <div id="MoreInfoShort">
+<!--#_ 
+                                            if(has_resp == true) {
+                                                var encodedVal = Srch.U.getMultipleHHXMLNodeValues(hhProps, "responsibilities", 3, delimiter);
+                                                if (Srch.U.e(encodedVal)) { encodedVal = $htmlEncode(Srch.U.getUnEncodedMultiValuedResults(ctx.CurrentItem.Responsibilities, 3, delimiter))}
+                                                if (!Srch.U.e(encodedVal)) {
+_#-->
+                                                    <div id="ResponsibilitiesValue" class="ms-srch-ellipsis"> 
+                                                        <span id="FieldTitle" class="ms-soften"> _#= $htmlEncode(Srch.Res.item_People_Responsibilities) =#_ </span>
+                                                        _#= encodedVal =#_ 
+                                                     </div>
+<!--#_ 
+                                                }
+_#-->
+<!--#_ 
+                                            } else if(has_ski == true) {
+                                                var encodedVal = Srch.U.getMultipleHHXMLNodeValues(hhProps, "skills", 3, delimiter);
+                                                if (Srch.U.e(encodedVal)) { encodedVal = $htmlEncode(Srch.U.getUnEncodedMultiValuedResults(ctx.CurrentItem.Skills, 3, delimiter))}
+                                                if (!Srch.U.e(encodedVal)) {
+_#-->
+                                                    <div id="SkillsValue" class="ms-srch-ellipsis"> 
+                                                        <span id="FieldTitle" class="ms-soften"> _#= $htmlEncode(Srch.Res.item_People_Skills) =#_ </span>
+                                                        _#= encodedVal =#_ 
+                                                    </div>
+<!--#_ 
+                                                } 
+_#-->
+<!--#_ 
+                                            } else if(has_pp == true) {
+                                                var encodedVal = Srch.U.getMultipleHHXMLNodeValues(hhProps, "pastprojects", 3, delimiter);
+                                                if (Srch.U.e(encodedVal)) { encodedVal = $htmlEncode(Srch.U.getUnEncodedMultiValuedResults(ctx.CurrentItem.PastProjects, 3, delimiter))}
+                                                if (!Srch.U.e(encodedVal)) {
+_#-->
+                                                    <div id="PastProjectsValue" class="ms-srch-ellipsis"> 
+                                                        <span id="FieldTitle" class="ms-soften"> _#= $htmlEncode(Srch.Res.item_People_PastProjects) =#_ </span>
+                                                        _#= encodedVal =#_ 
+                                                    </div>
+<!--#_ 
+                                                } 
+_#-->
+<!--#_ 
+                                            } else if(has_int == true) {
+                                                var encodedVal = Srch.U.getMultipleHHXMLNodeValues(hhProps, "interests", 3, delimiter);
+                                                if (Srch.U.e(encodedVal)) { encodedVal = $htmlEncode(Srch.U.getUnEncodedMultiValuedResults(ctx.CurrentItem.Interests, 3, delimiter))}
+                                                if (!Srch.U.e(encodedVal)) {
+_#-->
+                                                    <div id="InterestsValue" class="ms-srch-ellipsis"> 
+                                                        <span id="FieldTitle" class="ms-soften"> _#= $htmlEncode(Srch.Res.item_People_Interests) =#_ </span>
+                                                        _#= encodedVal =#_ 
+                                                    </div>
+<!--#_ 
+                                                } 
+_#-->
+<!--#_ 
+                                            } else if(has_sch == true){
+                                                var encodedVal = Srch.U.getMultipleHHXMLNodeValues(hhProps, "schools", 3, delimiter);
+                                                if (Srch.U.e(encodedVal)) { encodedVal = $htmlEncode(Srch.U.getUnEncodedMultiValuedResults(ctx.CurrentItem.Schools, 3, delimiter))}
+                                                if (!Srch.U.e(encodedVal)) {
+_#-->
+                                                    <div id="SchoolsValue" class="ms-srch-ellipsis"> 
+                                                        <span id="FieldTitle" class="ms-soften"> _#= $htmlEncode(Srch.Res.item_People_Schools) =#_ </span>
+                                                        _#= encodedVal =#_ 
+                                                    </div>
+<!--#_ 
+                                                } 
+_#-->
+<!--#_ 
+                                            } 
+_#-->
+                                        </div>
+<!--#_ 
+                                    } 
+_#-->
+<!--#_ 
+                                    if(has_abme == true || has_ski == true || has_pp == true || has_int == true) {
+_#-->                                
+                                        <div id="MoreInfoLong">
+<!--#_ 
+                                            if(has_abme == true) {
+                                                var encodedVal = Srch.U.getTrimmedProcessedHHXMLString(Srch.U.getSingleHHXMLNodeValue(hhProps, "aboutme"), 125);
+                                                if (Srch.U.e(encodedVal)) { encodedVal = $htmlEncode(Srch.U.getTrimmedString(ctx.CurrentItem.AboutMe, 125)) }
+                                                if (!Srch.U.e(encodedVal)) {
+_#-->
+                                                    _#= encodedVal =#_ 
+<!--#_ 
+                                                } 
+_#-->
+<!--#_ 
+                                            } else if(has_ski == true && has_resp == true) {
+                                                var encodedVal = Srch.U.getTrimmedProcessedHHXMLString(Srch.U.getMultipleHHXMLNodeValues(hhProps, "skills", 3, delimiter), 125);
+                                                if (Srch.U.e(encodedVal)) { encodedVal = $htmlEncode(Srch.U.getTrimmedString(Srch.U.getUnEncodedMultiValuedResults(ctx.CurrentItem.Skills, 3, delimiter), 125)) }
+                                                if (!Srch.U.e(encodedVal)) {
+_#-->
+                                                    <span id="FieldTitle" class="ms-soften"> _#= $htmlEncode(Srch.Res.item_People_Skills) =#_ </span> 
+                                                    _#= encodedVal =#_ 
+<!--#_ 
+                                                } 
+_#-->
+<!--#_ 
+                                            } else if(has_pp == true && (has_ski == true || has_resp == true)) {
+                                                var encodedVal = Srch.U.getTrimmedProcessedHHXMLString(Srch.U.getMultipleHHXMLNodeValues(hhProps, "pastprojects", 3, delimiter), 125);
+                                                if (Srch.U.e(encodedVal)) { encodedVal = $htmlEncode(Srch.U.getTrimmedString(Srch.U.getUnEncodedMultiValuedResults(ctx.CurrentItem.PastProjects, 3, delimiter), 125)) }
+                                                if (!Srch.U.e(encodedVal)) {
+_#-->
+                                                    <span id="FieldTitle" class="ms-soften"> _#= $htmlEncode(Srch.Res.item_People_PastProjects) =#_ </span>
+                                                    _#= encodedVal =#_ 
+<!--#_ 
+                                                } 
+_#-->
+<!--#_ 
+                                            } else if(has_int == true && (has_pp == true || has_ski == true || has_resp == true)) {
+                                                var encodedVal = Srch.U.getTrimmedProcessedHHXMLString(Srch.U.getMultipleHHXMLNodeValues(hhProps, "interests", 3, delimiter), 125);
+                                                if (Srch.U.e(encodedVal)) { encodedVal = $htmlEncode(Srch.U.getTrimmedString(Srch.U.getUnEncodedMultiValuedResults(ctx.CurrentItem.Interests, 3, delimiter), 125)) }
+                                                if (!Srch.U.e(encodedVal)) {
+_#-->
+                                                    <span id="FieldTitle" class="ms-soften"> _#= $htmlEncode(Srch.Res.item_People_Interests) =#_ </span>
+                                                    _#= encodedVal =#_
+<!--#_ 
+                                                } 
+_#-->
+<!--#_ 
+                                            } 
+_#-->
+                                        </div>
+<!--#_ 
+                                    } 
+_#-->
+<!--#_ 
+                                    if(isSelfSrch == true) {
+_#-->
+                                        <hr class="ms-srch-people-item-separator" />
+                                        <div id="SelfSearchInfo">
+                                            <div id="Heading">
+                                                <a id="EditProfileLink" href="_#= $urlHtmlEncode(ctx.CurrentItem.EditProfileUrl) =#_"> _#= $htmlEncode(Srch.Res.item_People_EditProfileLink) =#_ </a>
+                                            </div>
+                                            <div id="Frequency">
+                                                <span id="FieldTitle" class="ms-soften"> _#= $htmlEncode(Srch.Res.item_People_SelfSearchFrequency) =#_ </span>
+                                                <ul id="FrequencyCard">
+                                                    <li id="MonthlyViews">
+<!--#_ 
+                                                        var encodedVal = (ctx.CurrentItem.ProfileViewsLastMonth == 1) ? $htmlEncode(String.format(Srch.Res.item_People_SelfSearchFrequency_ViewsMonths_Singular, ctx.CurrentItem.ProfileViewsLastMonth)) : 
+                                                            $htmlEncode(String.format(Srch.Res.item_People_SelfSearchFrequency_ViewsMonths_Plural, ctx.CurrentItem.ProfileViewsLastMonth));
+_#-->
+                                                           _#= encodedVal =#_  
+                                                    </li>
+                                                    <li id="DailyViews">
+<!--#_ 
+                                                        var encodedVal = (ctx.CurrentItem.ProfileViewsLastWeek == 1) ? $htmlEncode(String.format(Srch.Res.item_People_SelfSearchFrequency_ViewsWeeks_Singular, ctx.CurrentItem.ProfileViewsLastWeek)) :
+                                                            $htmlEncode(String.format(Srch.Res.item_People_SelfSearchFrequency_ViewsWeeks_Plural, ctx.CurrentItem.ProfileViewsLastWeek));
+_#-->
+                                                        _#= encodedVal =#_  
+                                                    </li>
+                                                </ul>
+                                            </div>
+<!--#_ 
+                                            if(has_query == true) {
+_#-->                                        
+                                                <div id="Keywords">
+                                                    <span id="FieldTitle" class="ms-soften"> _#= $htmlEncode(Srch.Res.item_People_SelfSearchKeywords) =#_ </span>
+<!--#_ 
+                                                    var encodedVal = $htmlEncode(Srch.U.getTrimmedString(Srch.U.getUnEncodedMultiValuedResults(ctx.CurrentItem.ProfileQueriesFoundYou, 5, delimiter), 84));
+                                                    if (!Srch.U.e(encodedVal)) {
+_#-->
+                                                        _#= encodedVal =#_
+<!--#_ 
+                                                    } 
+_#-->
+                                                </div>    
+<!--#_ 
+                                            } 
+_#-->
+<!--#_
+                                            if(!Srch.U.n(ctx.CurrentItem.LastModifiedTime))
+                                            {
+                                                var lastModifiedTime = ctx.CurrentItem.LastModifiedTime;
+                                                var encodedLastModifiedTimeId = $htmlEncode(id + "_lastModifiedTime");
+                                                AddPostRenderCallback(ctx, function()
+                                                {
+                                                    Srch.U.renderFriendlyTimeIntervalString(lastModifiedTime, encodedLastModifiedTimeId);
+                                                });
+_#-->
+                                                <div id="LastModifiedTime"> 
+                                                    <span class="ms-textSmall">_#= $htmlEncode(Srch.Res.item_People_LastModified) =#_</span>
+                                                    <span id="_#= encodedLastModifiedTimeId =#_" class="ms-textSmall ms-srch-ellipsis"></span>
+                                                </div>
+<!--#_
+                                            }
+_#-->
+                                        </div>
+<!--#_ 
+                                    } 
+_#-->
+                                </div> 
+                            </div>
+                        </div>
+<!--#_
+                    AddPostRenderCallback(ctx, function(){
+                        EnsureScriptFunc("clienttemplates.js", "RenderUserFieldWorker", function() {
+                            var getUserPersona = function() {
+                                var renderCtx = new ContextInfo();
+                                renderCtx.Templates = {};
+                                renderCtx.Templates["Fields"] = {};
+                                var fieldSchemaData = { "PictureOnly":"1", "PictureSize": "Size_72px"};
+                                var listSchema = {"EffectivePresenceEnabled": "1", "PresenceAlt": Srch.Res.item_People_NoPresenceAvailable};
+                                var userData = {"title": uName, "email": uEmail, "picture": uPicUrl, "sip": uSip};
+                                var personaControlElement = document.getElementById(userPersonaId);
+                                if (!Srch.U.n(personaControlElement))
+                                {
+                                    personaControlElement.innerHTML = RenderUserFieldWorker(renderCtx, fieldSchemaData, userData, listSchema);
+                                }
+                                if(typeof(ctx.EnqueueImnRequest) == "undefined") { ctx.EnqueueImnRequest = false; }
+                                if (ctx.EnqueueImnRequest == false) {
+                                    ctx.ClientControl.add_oneTimeResultRendered(function(){ if (typeof(ProcessImn) != "undefined") { ProcessImn(); } });
+                                    ctx.EnqueueImnRequest = true;
+                                 }
+                            };
+                            getUserPersona();
+                        });
+                    });
+_#-->                        
+<!--#_ 
+                } 
+_#-->
+    </div>
+</body>
+</html>
