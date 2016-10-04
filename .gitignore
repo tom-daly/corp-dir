@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+/CorpDir.SharePoint/bin/Debug
+/CorpDir.SharePoint/obj/Debug
+/CorpDir.SharePoint/pkg/Debug/CorpDir.SharePoint
+/CorpDir.SharePoint/pkgobj/Debug
