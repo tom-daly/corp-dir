@@ -55,18 +55,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ContentTypes\CorpDirConfigurationContentType\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{9748f121-7b59-4104-9037-53fba2c91a42}</SharePointProjectItemId>
-    </None>
-    <None Include="Lists\CorpDirConfigurationList\CorpDirConfigurationListInstance\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{14d3a307-ef87-4db3-ad87-2ecaf653439e}</SharePointProjectItemId>
-    </None>
-    <None Include="Lists\CorpDirConfigurationList\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{3867e178-7b9b-4868-970c-cb6c7c37d5a3}</SharePointProjectItemId>
-    </None>
-    <None Include="SiteColumns\CorpDirSiteColumns\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{8fd5117f-c9c1-4c07-9736-6bf0e5d0476b}</SharePointProjectItemId>
-    </None>
     <None Include="Style Library\corp-dir\css\_helpers.scss" />
     <None Include="Style Library\corp-dir\css\_config.scss" />
     <None Include="Style Library\corp-dir\css\_results.scss" />
@@ -87,9 +75,6 @@
     <None Include="Elements\CustomActions\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{c05f1897-3d66-4db5-bcfc-96d01529bc66}</SharePointProjectItemId>
     </None>
-    <None Include="Display Templates\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{1c728ed7-74fa-4b22-9345-c90d932ef392}</SharePointProjectItemId>
-    </None>
     <None Include="Features\CorpDir.SharePoint\CorpDir.SharePoint.feature">
       <FeatureId>{3ff7efcf-5eaa-4230-8c19-d55db2974b28}</FeatureId>
     </None>
@@ -109,11 +94,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="ContentTypes\CorpDirConfigurationContentType\Elements.xml" />
-    <Content Include="Lists\CorpDirConfigurationList\CorpDirConfigurationListInstance\Elements.xml" />
-    <Content Include="Lists\CorpDirConfigurationList\Elements.xml" />
-    <Content Include="Lists\CorpDirConfigurationList\Schema.xml" />
-    <Content Include="SiteColumns\CorpDirSiteColumns\Elements.xml" />
     <Content Include="Style Library\corp-dir\images\cog.png" />
     <Content Include="Style Library\corp-dir\images\feature-logo.png" />
     <Content Include="Style Library\corp-dir\js\corp-dir-common.js" />
@@ -138,11 +118,9 @@
     <Content Include="Elements\CustomActions\Elements.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Display Templates\Elements.xml" />
     <Content Include="Features\CorpDir.SharePoint\CorpDir.SharePoint.Template.xml">
       <DependentUpon>CorpDir.SharePoint.feature</DependentUpon>
     </Content>
-    <Content Include="Display Templates\Search\Item_Person_FPS.html" />
     <Content Include="Style Library\corp-dir\css\default.css">
       <DependentUpon>default.scss</DependentUpon>
     </Content>
