@@ -64,6 +64,9 @@
     <None Include="Style Library\corp-dir\js\corp-dir.min.js.map">
       <DependentUpon>corp-dir.min.js</DependentUpon>
     </None>
+    <None Include="Style Library\corp-dir\vendor\jscolor\jscolor.min.js.map">
+      <DependentUpon>jscolor.min.js</DependentUpon>
+    </None>
     <None Include="Style Library\corp-dir\vendor\vendor.js.bundle" />
     <None Include="Style Library\corp-dir\vendor\vendor.min.js.map">
       <DependentUpon>vendor.min.js</DependentUpon>
@@ -106,14 +109,21 @@
       <DependentUpon>corp-dir.js</DependentUpon>
     </Content>
     <Content Include="Style Library\corp-dir\vendor\jQuery\jquery-1.12.4.min.js" />
+    <Content Include="Style Library\corp-dir\vendor\jscolor\jscolor.min.js">
+      <DependentUpon>jscolor.js</DependentUpon>
+    </Content>
     <Content Include="Style Library\corp-dir\vendor\vendor.js">
       <DependentUpon>vendor.js.bundle</DependentUpon>
     </Content>
     <Content Include="Style Library\corp-dir\vendor\vendor.min.js">
       <DependentUpon>vendor.js</DependentUpon>
     </Content>
-    <Content Include="Style Library\corp-dir\vendor\jscolor\jscolor.js" />
-    <Content Include="Style Library\corp-dir\vendor\jscolor\jscolor.min.js" />
+    <Content Include="Style Library\corp-dir\vendor\jscolor\jscolor.js">
+      <Compile>True</Compile>
+      <Minify>True</Minify>
+      <IgnoreWarnings>True</IgnoreWarnings>
+      <IgnoreErrors>True</IgnoreErrors>
+    </Content>
     <Content Include="WebParts\CorpDirControlsWebPart\Elements.xml" />
     <Content Include="Elements\CustomActions\Elements.xml">
       <SubType>Designer</SubType>

@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <CustomAction Location="ScriptLink"
-                ScriptBlock="document.write('&lt;link rel=&quot;stylesheet&quot; href=&quot;~sitecollection/Style Library/corp-dir/css/default.min.css?v10.3.2016&quot;/&gt;');"
+                ScriptBlock="document.write('&lt;link rel=&quot;stylesheet&quot; href=&quot;~sitecollection/Style Library/corp-dir/css/default.min.css?v11.29.2016&quot;/&gt;');"
                 Sequence="100"></CustomAction>
   <CustomAction Location="ScriptLink"
-                ScriptBlock="document.write('&lt;script type=&quot;text/javascript&quot; src=&quot;~sitecollection/Style Library/corp-dir/vendor/vendor.min.js?v10.3.2016&quot;&gt;&lt;/' + 'script&gt;');"
+                ScriptBlock="document.write('&lt;script type=&quot;text/javascript&quot; src=&quot;~sitecollection/Style Library/corp-dir/vendor/vendor.min.js?v11.29.2016&quot;&gt;&lt;/' + 'script&gt;');"
                 Sequence="102"></CustomAction>
   <CustomAction Location="ScriptLink"
                 ScriptBlock="document.write('&lt;script type=&quot;text/javascript&quot;&gt; var $jQCorpDir = jQuery.noConflict(); &lt;/' + 'script&gt;');"
                 Sequence="106"></CustomAction>
   <CustomAction Location="ScriptLink"
-                ScriptBlock="document.write('&lt;script type=&quot;text/javascript&quot; src=&quot;~sitecollection/Style Library/corp-dir/js/corp-dir.min.js?v10.3.2016&quot;&gt;&lt;/' + 'script&gt;');"
+                ScriptBlock="document.write('&lt;script type=&quot;text/javascript&quot; src=&quot;~sitecollection/Style Library/corp-dir/js/corp-dir.min.js?v11.29.2016&quot;&gt;&lt;/' + 'script&gt;');"
                 Sequence="108"></CustomAction>
 </Elements>

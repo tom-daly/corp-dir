@@ -1,4 +1,4 @@
-window.corpDir = window.corpDir || {};
+var corpDir = window.corpDir || {};
 corpDir.controls = (function() {
 
     var clearSelectedLetter = function() {

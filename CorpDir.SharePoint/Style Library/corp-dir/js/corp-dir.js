@@ -1,5 +1,5 @@
 ﻿///#source 1 1 /Style Library/corp-dir/js/corp-dir-common.js
-window.corpDir = window.corpDir || {};
+var corpDir = window.corpDir || {};
 corpDir.common = (function () {
 
     var globals = {
@@ -28,7 +28,7 @@ corpDir.common = (function () {
 
 })();
 ///#source 1 1 /Style Library/corp-dir/js/corp-dir-controls.js
-window.corpDir = window.corpDir || {};
+var corpDir = window.corpDir || {};
 corpDir.controls = (function() {
 
     var clearSelectedLetter = function() {
@@ -88,7 +88,7 @@ corpDir.controls = (function() {
 
 })();//asdfasd
 ///#source 1 1 /Style Library/corp-dir/js/corp-dir-config-panel.js
-window.corpDir = window.corpDir || {};
+var corpDir = window.corpDir || {};
 corpDir.config = (function () {
 
     var enableAdminToggle = function () {

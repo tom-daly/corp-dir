@@ -13,5 +13,7 @@
     <!-- Vendor -->
     <File Path="corp-dir\vendor\vendor.min.js" Url="corp-dir/vendor/vendor.min.js" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary"  />
     <File Path="corp-dir\vendor\vendor.min.js.map" Url="corp-dir/vendor/vendor.min.js.map" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary"  />
+    <File Path="corp-dir\vendor\jscolor\jscolor.min.js" Url="corp-dir/vendor/jscolor/jscolor.min.js" />
+    <File Path="corp-dir\vendor\jscolor\jscolor.min.js.map" Url="corp-dir/vendor/jscolor/jscolor.min.js.map" />
   </Module>
 </Elements>

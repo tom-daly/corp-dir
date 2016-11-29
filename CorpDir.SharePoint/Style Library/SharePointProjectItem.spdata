@@ -14,7 +14,6 @@
     <ProjectItemFile Source="corp-dir\css\_helpers.scss" Target="Style Library\corp-dir\css\" Type="ElementFile" />
     <ProjectItemFile Source="corp-dir\vendor\jQuery\jquery-1.12.4.min.js" Target="Style Library\corp-dir\vendor\jQuery\" Type="ElementFile" />
     <ProjectItemFile Source="corp-dir\vendor\jscolor\jscolor.js" Target="Style Library\corp-dir\vendor\jscolor\" Type="ElementFile" />
-    <ProjectItemFile Source="corp-dir\vendor\jscolor\jscolor.min.js" Target="Style Library\corp-dir\vendor\jscolor\" Type="ElementFile" />
     <ProjectItemFile Source="corp-dir\js\corp-dir-common.js" Target="Style Library\corp-dir\js\" Type="ElementFile" />
     <ProjectItemFile Source="corp-dir\js\corp-dir-config-panel.js" Target="Style Library\corp-dir\js\" Type="ElementFile" />
     <ProjectItemFile Source="corp-dir\js\corp-dir-controls.js" Target="Style Library\corp-dir\js\" Type="ElementFile" />
@@ -27,5 +26,7 @@
     <ProjectItemFile Source="corp-dir\vendor\vendor.js" Target="Style Library\corp-dir\vendor\" Type="ElementFile" />
     <ProjectItemFile Source="corp-dir\vendor\vendor.min.js" Target="Style Library\corp-dir\vendor\" Type="ElementFile" />
     <ProjectItemFile Source="corp-dir\vendor\vendor.min.js.map" Target="Style Library\corp-dir\vendor\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\vendor\jscolor\jscolor.min.js" Target="Style Library\corp-dir\vendor\jscolor\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\vendor\jscolor\jscolor.min.js.map" Target="Style Library\corp-dir\vendor\jscolor\" Type="ElementFile" />
   </Files>
 </ProjectItem>

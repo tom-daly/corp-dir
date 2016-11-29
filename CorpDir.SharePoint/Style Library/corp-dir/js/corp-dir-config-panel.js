@@ -1,4 +1,4 @@
-window.corpDir = window.corpDir || {};
+var corpDir = window.corpDir || {};
 corpDir.config = (function () {
 
     var enableAdminToggle = function () {
