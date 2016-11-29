@@ -9,13 +9,7 @@
  *
  * See usage examples at http://jscolor.com/examples/
  */
-
-
-"use strict";
-
-
 if (!window.jscolor) { window.jscolor = (function () {
-
 
 var jsc = {
 
