@@ -64,9 +64,6 @@
     <None Include="Style Library\corp-dir\js\corp-dir.min.js.map">
       <DependentUpon>corp-dir.min.js</DependentUpon>
     </None>
-    <None Include="Style Library\corp-dir\vendor\jscolor\jscolor.min.js.map">
-      <DependentUpon>jscolor.min.js</DependentUpon>
-    </None>
     <None Include="Style Library\corp-dir\vendor\vendor.js.bundle" />
     <None Include="Style Library\corp-dir\vendor\vendor.min.js.map">
       <DependentUpon>vendor.min.js</DependentUpon>
@@ -74,9 +71,6 @@
     <None Include="WebParts\CorpDirControlsWebPart\CorpDirControlsWebPart.dwp" />
     <None Include="WebParts\CorpDirControlsWebPart\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{64fdccbd-95c9-42ee-ae5f-5974dce53f7f}</SharePointProjectItemId>
-    </None>
-    <None Include="Elements\CustomActions\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{c05f1897-3d66-4db5-bcfc-96d01529bc66}</SharePointProjectItemId>
     </None>
     <None Include="Features\CorpDir.SharePoint\CorpDir.SharePoint.feature">
       <FeatureId>{3ff7efcf-5eaa-4230-8c19-d55db2974b28}</FeatureId>
@@ -97,11 +91,27 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Style Library\corp-dir\html\corp-dir.html" />
     <Content Include="Style Library\corp-dir\images\cog.png" />
     <Content Include="Style Library\corp-dir\images\feature-logo.png" />
-    <Content Include="Style Library\corp-dir\js\corp-dir-common.js" />
-    <Content Include="Style Library\corp-dir\js\corp-dir-config-panel.js" />
-    <Content Include="Style Library\corp-dir\js\corp-dir-controls.js" />
+    <Content Include="Style Library\corp-dir\js\corp-dir-common.js">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <IgnoreWarnings>True</IgnoreWarnings>
+      <IgnoreErrors>True</IgnoreErrors>
+    </Content>
+    <Content Include="Style Library\corp-dir\js\corp-dir-config-panel.js">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <IgnoreWarnings>True</IgnoreWarnings>
+      <IgnoreErrors>True</IgnoreErrors>
+    </Content>
+    <Content Include="Style Library\corp-dir\js\corp-dir-controls.js">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <IgnoreWarnings>True</IgnoreWarnings>
+      <IgnoreErrors>True</IgnoreErrors>
+    </Content>
     <Content Include="Style Library\corp-dir\js\corp-dir.js">
       <DependentUpon>corp-dir.js.bundle</DependentUpon>
     </Content>
@@ -109,9 +119,6 @@
       <DependentUpon>corp-dir.js</DependentUpon>
     </Content>
     <Content Include="Style Library\corp-dir\vendor\jQuery\jquery-1.12.4.min.js" />
-    <Content Include="Style Library\corp-dir\vendor\jscolor\jscolor.min.js">
-      <DependentUpon>jscolor.js</DependentUpon>
-    </Content>
     <Content Include="Style Library\corp-dir\vendor\vendor.js">
       <DependentUpon>vendor.js.bundle</DependentUpon>
     </Content>
@@ -120,14 +127,11 @@
     </Content>
     <Content Include="Style Library\corp-dir\vendor\jscolor\jscolor.js">
       <Compile>True</Compile>
-      <Minify>True</Minify>
+      <Minify>False</Minify>
       <IgnoreWarnings>True</IgnoreWarnings>
       <IgnoreErrors>True</IgnoreErrors>
     </Content>
     <Content Include="WebParts\CorpDirControlsWebPart\Elements.xml" />
-    <Content Include="Elements\CustomActions\Elements.xml">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Features\CorpDir.SharePoint\CorpDir.SharePoint.Template.xml">
       <DependentUpon>CorpDir.SharePoint.feature</DependentUpon>
     </Content>
