@@ -2,18 +2,21 @@
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="Style Library" Path="Style Library" Url="Style Library">
     <!-- CSS -->
+    <File Path="corp-dir\css\default.css" Url="corp-dir/css/default.css" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary" />
     <File Path="corp-dir\css\default.css.map" Url="corp-dir/css/default.css.map" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary" />
     <File Path="corp-dir\css\default.min.css" Url="corp-dir/css/default.min.css" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary" />
     <!-- JavaScript -->
+    <File Path="corp-dir\js\corp-dir.js" Url="corp-dir/js/corp-dir.js" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary" />
     <File Path="corp-dir\js\corp-dir.min.js" Url="corp-dir/js/corp-dir.min.js" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary" />
-    <File Path="corp-dir\js\corp-dir.min.js.map" Url="corp-dir/js/corp-dir.min.js.map" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary" />    
+    <File Path="corp-dir\js\corp-dir.min.js.map" Url="corp-dir/js/corp-dir.min.js.map" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary" />
     <!-- Images -->
     <File Path="corp-dir\images\cog.png" Url="corp-dir/images/cog.png" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary" />
     <File Path="corp-dir\images\feature-logo.png" Url="corp-dir/images/feature-logo.png" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary" />
     <!-- Vendor -->
-    <File Path="corp-dir\vendor\vendor.min.js" Url="corp-dir/vendor/vendor.min.js" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary"  />
-    <File Path="corp-dir\vendor\vendor.min.js.map" Url="corp-dir/vendor/vendor.min.js.map" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary"  />
-    <File Path="corp-dir\vendor\jscolor\jscolor.min.js" Url="corp-dir/vendor/jscolor/jscolor.min.js" />
-    <File Path="corp-dir\vendor\jscolor\jscolor.min.js.map" Url="corp-dir/vendor/jscolor/jscolor.min.js.map" />
+    <File Path="corp-dir\vendor\vendor.js" Url="corp-dir/vendor/vendor.js" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="corp-dir\vendor\vendor.min.js" Url="corp-dir/vendor/vendor.min.js" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="corp-dir\vendor\vendor.min.js.map" Url="corp-dir/vendor/vendor.min.js.map" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <!-- HTML -->
+    <File Path="corp-dir\html\corp-dir.html" Url="corp-dir/html/corp-dir.html" Level="Published" ReplaceContent="TRUE" Type="GhostableInLibrary" />
   </Module>
 </Elements>

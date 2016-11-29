@@ -85,5 +85,3 @@ corpDir.config = (function () {
     };
 
 })();
-
-ExecuteOrDelayUntilScriptLoaded(corpDir.config.init, "sp.js");

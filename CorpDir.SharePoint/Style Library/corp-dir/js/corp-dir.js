@@ -86,7 +86,7 @@ corpDir.controls = (function() {
         search: search
     };
 
-})();//asdfasd
+})();
 ///#source 1 1 /Style Library/corp-dir/js/corp-dir-config-panel.js
 var corpDir = window.corpDir || {};
 corpDir.config = (function () {
@@ -175,5 +175,3 @@ corpDir.config = (function () {
     };
 
 })();
-
-ExecuteOrDelayUntilScriptLoaded(corpDir.config.init, "sp.js");

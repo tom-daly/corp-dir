@@ -10,7 +10,7 @@
   </settings>
   <!--The order of the <file> elements determines the order of the files in the bundle.-->
   <files>
-    <file>/Style Library/corp-dir/vendor/jscolor/jscolor.min.js</file>
+    <file>/Style Library/corp-dir/vendor/jscolor/jscolor.js</file>
     <file>/Style Library/corp-dir/vendor/jQuery/jquery-1.12.4.min.js</file>
   </files>
 </bundle>

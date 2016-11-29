@@ -26,7 +26,6 @@
     <ProjectItemFile Source="corp-dir\vendor\vendor.js" Target="Style Library\corp-dir\vendor\" Type="ElementFile" />
     <ProjectItemFile Source="corp-dir\vendor\vendor.min.js" Target="Style Library\corp-dir\vendor\" Type="ElementFile" />
     <ProjectItemFile Source="corp-dir\vendor\vendor.min.js.map" Target="Style Library\corp-dir\vendor\" Type="ElementFile" />
-    <ProjectItemFile Source="corp-dir\vendor\jscolor\jscolor.min.js" Target="Style Library\corp-dir\vendor\jscolor\" Type="ElementFile" />
-    <ProjectItemFile Source="corp-dir\vendor\jscolor\jscolor.min.js.map" Target="Style Library\corp-dir\vendor\jscolor\" Type="ElementFile" />
+    <ProjectItemFile Source="corp-dir\html\corp-dir.html" Target="Style Library\corp-dir\html\" Type="ElementFile" />
   </Files>
 </ProjectItem>

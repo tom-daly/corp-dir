@@ -1,0 +1,136 @@
+﻿<link rel="stylesheet" href="../Style Library/corp-dir/css/default.min.css?v11.29.2016" type="text/css" />
+<script src="../Style Library/corp-dir/vendor/vendor.min.js?v11.29.2016" type="text/javascript"></script>
+<script type="text/javascript">
+    var $jQCorpDir = jQuery.noConflict();
+</script>
+<script src="../Style Library/corp-dir/js/corp-dir.min.js?v11.29.2016" type="text/javascript"></script>
+
+<div class="corp-dir-webpart" id="corp-dir-webpart">
+    <!-- Corporate Directory Configuration Panel -->
+    <div class="corp-dir-config-panel" id="corp-dir-config-panel" style="display:none;">
+        <div class="corp-dir-config-properties">
+            <div class='corp-dir-property-group'>
+                <div class='corp-dir-property-label'>
+                    Button Color
+                </div>
+                <div class='corp-dir-property-value'>
+                    <input class="jscolor" id="button-color-picker" value="">
+                </div>
+            </div>
+            <div class='corp-dir-property-group'>
+                <div class='corp-dir-property-label'>
+                    Button Highlight Color
+                </div>
+                <div class='corp-dir-property-value'>
+                    <input class="jscolor" id="button-hover-color-picker" value="">
+                </div>
+            </div>
+        </div>
+        <div class='corp-dir-config-panel-controls' id='corp-dir-config-panel-controls'>
+            <div class='corp-dir-config-panel-message' id="corp-dir-config-panel-message"></div>
+            <div>
+                <input class="corp-dir-config-panel-save" onclick="corpDir.config.save();" type='button' value="Save">
+            </div>
+        </div>
+    </div>
+    <div class='corp-dir-config-toggle init-hide' id='corp-dir-config-toggle'>
+        <a href='javascript:void(0)' onclick="corpDir.config.toggle();"></a>
+    </div><!-- end Corporate Directory Configuration Panel -->
+    <!-- Corporate Directory Controls -->
+    <div class="corp-dir-controls init-hide" id="corp-dir-controls">
+        <div class="letter ms-Button ms-Button--primary" id="see-all" onclick="corpDir.controls.search(&#39;&#39;);">
+            See All
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-a" onclick="corpDir.controls.search(&#39;a&#39;);">
+            a
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-b" onclick="corpDir.controls.search(&#39;b&#39;);">
+            b
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-c" onclick="corpDir.controls.search(&#39;c&#39;);">
+            c
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-d" onclick="corpDir.controls.search(&#39;d&#39;);">
+            d
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-e" onclick="corpDir.controls.search(&#39;e&#39;);">
+            e
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-f" onclick="corpDir.controls.search(&#39;f&#39;);">
+            f
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-g" onclick="corpDir.controls.search(&#39;g&#39;);">
+            g
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-h" onclick="corpDir.controls.search(&#39;h&#39;);">
+            h
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-i" onclick="corpDir.controls.search(&#39;i&#39;);">
+            i
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-j" onclick="corpDir.controls.search(&#39;j&#39;);">
+            j
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-k" onclick="corpDir.controls.search(&#39;k&#39;);">
+            k
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-l" onclick="corpDir.controls.search(&#39;l&#39;);">
+            l
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-m" onclick="corpDir.controls.search(&#39;m&#39;);">
+            m
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-n" onclick="corpDir.controls.search(&#39;n&#39;);">
+            n
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-o" onclick="corpDir.controls.search(&#39;o&#39;);">
+            o
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-p" onclick="corpDir.controls.search(&#39;p&#39;);">
+            p
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-q" onclick="corpDir.controls.search(&#39;q&#39;);">
+            q
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-r" onclick="corpDir.controls.search(&#39;r&#39;);">
+            r
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-s" onclick="corpDir.controls.search(&#39;s&#39;);">
+            s
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-t" onclick="corpDir.controls.search(&#39;t&#39;);">
+            t
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-u" onclick="corpDir.controls.search(&#39;u&#39;);">
+            u
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-v" onclick="corpDir.controls.search(&#39;v&#39;);">
+            v
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-w" onclick="corpDir.controls.search(&#39;w&#39;);">
+            w
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-x" onclick="corpDir.controls.search(&#39;x&#39;);">
+            x
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-y" onclick="corpDir.controls.search(&#39;y&#39;);">
+            y
+        </div>
+        <div class="letter ms-Button ms-Button--primary" id="letter-z" onclick="corpDir.controls.search(&#39;z&#39;);">
+            z
+        </div>
+    </div><!-- end Corporate Directory Controls -->
+</div><!-- end corp-dir-webpart -->
+
+<script type="text/javascript">
+    $jQCorpDir(document).ready(function () {
+        SP.SOD.executeOrDelayUntilScriptLoaded(function () {
+                SP.SOD.executeOrDelayUntilScriptLoaded(function () {
+                        corpDir.config.init();
+                    },
+                    "sp.js");
+                SP.SOD.executeFunc("sp.js", false, function () { });
+            },
+            "strings.js");
+    });
+</script>

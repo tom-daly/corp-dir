@@ -1,4 +1,4 @@
-﻿///#source 1 1 /Style Library/corp-dir/vendor/jscolor/jscolor.min.js
+﻿///#source 1 1 /Style Library/corp-dir/vendor/jscolor/jscolor.js
 /**
  * jscolor - JavaScript Color Picker
  *
@@ -10,8 +10,1833 @@
  *
  * See usage examples at http://jscolor.com/examples/
  */
-window.jscolor||(window.jscolor=function(){var n={register:function(){n.attachDOMReadyEvent(n.init);n.attachEvent(document,"mousedown",n.onDocumentMouseDown);n.attachEvent(document,"touchstart",n.onDocumentTouchStart);n.attachEvent(window,"resize",n.onWindowResize)},init:function(){n.jscolor.lookupClass&&n.jscolor.installByClassName(n.jscolor.lookupClass)},tryInstallOnElements:function(t,i){for(var f,o,h=new RegExp("(^|\\s)("+i+")(\\s*(\\{[^}]*\\})|\\s|$)","i"),r=0;r<t.length;r+=1)if((t[r].type===undefined||t[r].type.toLowerCase()!="color"||!n.isColorAttrSupported)&&!t[r].jscolor&&t[r].className&&(f=t[r].className.match(h))){var e=t[r],u=null,s=n.getDataAttr(e,"jscolor");if(s!==null?u=s:f[4]&&(u=f[4]),o={},u)try{o=new Function("return ("+u+")")()}catch(c){n.warn("Error parsing jscolor options: "+c+":\n"+u)}e.jscolor=new n.jscolor(e,o)}},isColorAttrSupported:function(){var n=document.createElement("input");return n.setAttribute&&(n.setAttribute("type","color"),n.type.toLowerCase()=="color")?!0:!1}(),isCanvasSupported:function(){var n=document.createElement("canvas");return!!(n.getContext&&n.getContext("2d"))}(),fetchElement:function(n){return typeof n=="string"?document.getElementById(n):n},isElementType:function(n,t){return n.nodeName.toLowerCase()===t.toLowerCase()},getDataAttr:function(n,t){var r="data-"+t,i=n.getAttribute(r);return i!==null?i:null},attachEvent:function(n,t,i){n.addEventListener?n.addEventListener(t,i,!1):n.attachEvent&&n.attachEvent("on"+t,i)},detachEvent:function(n,t,i){n.removeEventListener?n.removeEventListener(t,i,!1):n.detachEvent&&n.detachEvent("on"+t,i)},_attachedGroupEvents:{},attachGroupEvent:function(t,i,r,u){n._attachedGroupEvents.hasOwnProperty(t)||(n._attachedGroupEvents[t]=[]);n._attachedGroupEvents[t].push([i,r,u]);n.attachEvent(i,r,u)},detachGroupEvents:function(t){var i,r;if(n._attachedGroupEvents.hasOwnProperty(t)){for(i=0;i<n._attachedGroupEvents[t].length;i+=1)r=n._attachedGroupEvents[t][i],n.detachEvent(r[0],r[1],r[2]);delete n._attachedGroupEvents[t]}},attachDOMReadyEvent:function(n){var r=!1,t=function(){r||(r=!0,n())},i;if(document.readyState==="complete"){setTimeout(t,1);return}document.addEventListener?(document.addEventListener("DOMContentLoaded",t,!1),window.addEventListener("load",t,!1)):document.attachEvent&&(document.attachEvent("onreadystatechange",function(){document.readyState==="complete"&&(document.detachEvent("onreadystatechange",arguments.callee),t())}),window.attachEvent("onload",t),document.documentElement.doScroll&&window==window.top&&(i=function(){if(document.body)try{document.documentElement.doScroll("left");t()}catch(n){setTimeout(i,1)}},i()))},warn:function(n){window.console&&window.console.warn&&window.console.warn(n)},preventDefault:function(n){n.preventDefault&&n.preventDefault();n.returnValue=!1},captureTarget:function(t){t.setCapture&&(n._capturedTarget=t,n._capturedTarget.setCapture())},releaseTarget:function(){n._capturedTarget&&(n._capturedTarget.releaseCapture(),n._capturedTarget=null)},fireEvent:function(n,t){var i;n&&(document.createEvent?(i=document.createEvent("HTMLEvents"),i.initEvent(t,!0,!0),n.dispatchEvent(i)):document.createEventObject?(i=document.createEventObject(),n.fireEvent("on"+t,i)):n["on"+t]&&n["on"+t]())},classNameToList:function(n){return n.replace(/^\s+|\s+$/g,"").split(/\s+/)},hasClass:function(n,t){return t?-1!=(" "+n.className.replace(/\s+/g," ")+" ").indexOf(" "+t+" "):!1},setClass:function(t,i){for(var u=n.classNameToList(i),r=0;r<u.length;r+=1)n.hasClass(t,u[r])||(t.className+=(t.className?" ":"")+u[r])},unsetClass:function(t,i){for(var f,u=n.classNameToList(i),r=0;r<u.length;r+=1)f=new RegExp("^\\s*"+u[r]+"\\s*|\\s*"+u[r]+"\\s*$|\\s+"+u[r]+"(\\s+)","g"),t.className=t.className.replace(f,"$1")},getStyle:function(n){return window.getComputedStyle?window.getComputedStyle(n):n.currentStyle},setStyle:function(){var t=document.createElement("div"),n=function(n){for(var i=0;i<n.length;i+=1)if(n[i]in t.style)return n[i]},i={borderRadius:n(["borderRadius","MozBorderRadius","webkitBorderRadius"]),boxShadow:n(["boxShadow","MozBoxShadow","webkitBoxShadow"])};return function(n,t,r){switch(t.toLowerCase()){case"opacity":var u=Math.round(parseFloat(r)*100);n.style.opacity=r;n.style.filter="alpha(opacity="+u+")";break;default:n.style[i[t]]=r}}}(),setBorderRadius:function(t,i){n.setStyle(t,"borderRadius",i||"0")},setBoxShadow:function(t,i){n.setStyle(t,"boxShadow",i||"none")},getElementPos:function(t,i){var r=0,u=0,e=t.getBoundingClientRect(),f;return r=e.left,u=e.top,i||(f=n.getViewPos(),r+=f[0],u+=f[1]),[r,u]},getElementSize:function(n){return[n.offsetWidth,n.offsetHeight]},getAbsPointerPos:function(n){n||(n=window.event);var t=0,i=0;return typeof n.changedTouches!="undefined"&&n.changedTouches.length?(t=n.changedTouches[0].clientX,i=n.changedTouches[0].clientY):typeof n.clientX=="number"&&(t=n.clientX,i=n.clientY),{x:t,y:i}},getRelPointerPos:function(n){n||(n=window.event);var e=n.target||n.srcElement,r=e.getBoundingClientRect(),u=0,f=0,t=0,i=0;return typeof n.changedTouches!="undefined"&&n.changedTouches.length?(t=n.changedTouches[0].clientX,i=n.changedTouches[0].clientY):typeof n.clientX=="number"&&(t=n.clientX,i=n.clientY),u=t-r.left,f=i-r.top,{x:u,y:f}},getViewPos:function(){var n=document.documentElement;return[(window.pageXOffset||n.scrollLeft)-(n.clientLeft||0),(window.pageYOffset||n.scrollTop)-(n.clientTop||0)]},getViewSize:function(){var n=document.documentElement;return[window.innerWidth||n.clientWidth,window.innerHeight||n.clientHeight,]},redrawPosition:function(){var o,r,h,u,c;if(n.picker&&n.picker.owner){o=n.picker.owner;o.fixed?(r=n.getElementPos(o.targetElement,!0),h=[0,0]):(r=n.getElementPos(o.targetElement),h=n.getViewPos());var f=n.getElementSize(o.targetElement),l=n.getViewSize(),s=n.getPickerOuterDims(o),i,t,e;switch(o.position.toLowerCase()){case"left":i=1;t=0;e=-1;break;case"right":i=1;t=0;e=1;break;case"top":i=0;t=1;e=-1;break;default:i=0;t=1;e=1}u=(f[t]+s[t])/2;c=o.smartPosition?[-h[i]+r[i]+s[i]>l[i]?-h[i]+r[i]+f[i]/2>l[i]/2&&r[i]+f[i]-s[i]>=0?r[i]+f[i]-s[i]:r[i]:r[i],-h[t]+r[t]+f[t]+s[t]-u+u*e>l[t]?-h[t]+r[t]+f[t]/2>l[t]/2&&r[t]+f[t]-u-u*e>=0?r[t]+f[t]-u-u*e:r[t]+f[t]-u+u*e:r[t]+f[t]-u+u*e>=0?r[t]+f[t]-u+u*e:r[t]+f[t]-u-u*e]:[r[i],r[t]+f[t]-u+u*e];var a=c[i],v=c[t],y=o.fixed?"fixed":"absolute",p=(c[0]+s[0]>r[0]||c[0]<r[0]+f[0])&&c[1]+s[1]<r[1]+f[1];n._drawPosition(o,a,v,y,p)}},_drawPosition:function(t,i,r,u,f){var e=f?0:t.shadowBlur;n.picker.wrap.style.position=u;n.picker.wrap.style.left=i+"px";n.picker.wrap.style.top=r+"px";n.setBoxShadow(n.picker.boxS,t.shadow?new n.BoxShadow(0,e,t.shadowBlur,0,t.shadowColor):null)},getPickerDims:function(t){var i=!!n.getSliderComponent(t);return[2*t.insetWidth+2*t.padding+t.width+(i?2*t.insetWidth+n.getPadToSliderPadding(t)+t.sliderSize:0),2*t.insetWidth+2*t.padding+t.height+(t.closable?2*t.insetWidth+t.padding+t.buttonHeight:0)]},getPickerOuterDims:function(t){var i=n.getPickerDims(t);return[i[0]+2*t.borderWidth,i[1]+2*t.borderWidth]},getPadToSliderPadding:function(n){return Math.max(n.padding,1.5*(2*n.pointerBorderWidth+n.pointerThickness))},getPadYComponent:function(n){switch(n.mode.charAt(1).toLowerCase()){case"v":return"v"}return"s"},getSliderComponent:function(n){if(n.mode.length>2)switch(n.mode.charAt(2).toLowerCase()){case"s":return"s";case"v":return"v"}return null},onDocumentMouseDown:function(t){t||(t=window.event);var i=t.target||t.srcElement;if(i._jscLinkedInstance)i._jscLinkedInstance.showOnClick&&i._jscLinkedInstance.show();else if(i._jscControlName)n.onControlPointerStart(t,i,i._jscControlName,"mouse");else n.picker&&n.picker.owner&&n.picker.owner.hide()},onDocumentTouchStart:function(t){t||(t=window.event);var i=t.target||t.srcElement;if(i._jscLinkedInstance)i._jscLinkedInstance.showOnClick&&i._jscLinkedInstance.show();else if(i._jscControlName)n.onControlPointerStart(t,i,i._jscControlName,"touch");else n.picker&&n.picker.owner&&n.picker.owner.hide()},onWindowResize:function(){n.redrawPosition()},onParentScroll:function(){n.picker&&n.picker.owner&&n.picker.owner.hide()},_pointerMoveEvent:{mouse:"mousemove",touch:"touchmove"},_pointerEndEvent:{mouse:"mouseup",touch:"touchend"},_pointerOrigin:null,_capturedTarget:null,onControlPointerStart:function(t,i,r,u){var f=i._jscInstance,e,o,c,s,h;n.preventDefault(t);n.captureTarget(i);e=function(f,e){n.attachGroupEvent("drag",f,n._pointerMoveEvent[u],n.onDocumentPointerMove(t,i,r,u,e));n.attachGroupEvent("drag",f,n._pointerEndEvent[u],n.onDocumentPointerEnd(t,i,r,u))};e(document,[0,0]);window.parent&&window.frameElement&&(o=window.frameElement.getBoundingClientRect(),c=[-o.left,-o.top],e(window.parent.window.document,c));s=n.getAbsPointerPos(t);h=n.getRelPointerPos(t);n._pointerOrigin={x:s.x-h.x,y:s.y-h.y};switch(r){case"pad":switch(n.getSliderComponent(f)){case"s":f.hsv[1]===0&&f.fromHSV(null,100,null);break;case"v":f.hsv[2]===0&&f.fromHSV(null,null,100)}n.setPad(f,t,0,0);break;case"sld":n.setSld(f,t,0)}n.dispatchFineChange(f)},onDocumentPointerMove:function(t,i,r,u,f){return function(t){var u=i._jscInstance;switch(r){case"pad":t||(t=window.event);n.setPad(u,t,f[0],f[1]);n.dispatchFineChange(u);break;case"sld":t||(t=window.event);n.setSld(u,t,f[1]);n.dispatchFineChange(u)}}},onDocumentPointerEnd:function(t,i){return function(){var t=i._jscInstance;n.detachGroupEvents("drag");n.releaseTarget();n.dispatchChange(t)}},dispatchChange:function(t){t.valueElement&&n.isElementType(t.valueElement,"input")&&n.fireEvent(t.valueElement,"change")},dispatchFineChange:function(n){if(n.onFineChange){var t;t=typeof n.onFineChange=="string"?new Function(n.onFineChange):n.onFineChange;t.call(n)}},setPad:function(t,i,r,u){var f=n.getAbsPointerPos(i),s=r+f.x-n._pointerOrigin.x-t.padding-t.insetWidth,h=u+f.y-n._pointerOrigin.y-t.padding-t.insetWidth,e=s*(360/(t.width-1)),o=100-h*(100/(t.height-1));switch(n.getPadYComponent(t)){case"s":t.fromHSV(e,o,null,n.leaveSld);break;case"v":t.fromHSV(e,null,o,n.leaveSld)}},setSld:function(t,i,r){var f=n.getAbsPointerPos(i),e=r+f.y-n._pointerOrigin.y-t.padding-t.insetWidth,u=100-e*(100/(t.height-1));switch(n.getSliderComponent(t)){case"s":t.fromHSV(null,u,null,n.leavePad);break;case"v":t.fromHSV(null,null,u,n.leavePad)}},_vmlNS:"jsc_vml_",_vmlCSS:"jsc_vml_css_",_vmlReady:!1,initVML:function(){var t,r,u,i;if(!n._vmlReady){if(t=document,t.namespaces[n._vmlNS]||t.namespaces.add(n._vmlNS,"urn:schemas-microsoft-com:vml"),!t.styleSheets[n._vmlCSS])for(r=["shape","shapetype","group","background","path","formulas","handles","fill","stroke","shadow","textbox","textpath","imagedata","line","polyline","curve","rect","roundrect","oval","arc","image"],u=t.createStyleSheet(),u.owningElement.id=n._vmlCSS,i=0;i<r.length;i+=1)u.addRule(n._vmlNS+"\\:"+r[i],"behavior:url(#default#VML);");n._vmlReady=!0}},createPalette:function(){var s={elm:null,draw:null},f,e,r,i,u,h;if(n.isCanvasSupported){var t=document.createElement("canvas"),o=t.getContext("2d"),h=function(n,i,r){var u,f;t.width=n;t.height=i;o.clearRect(0,0,t.width,t.height);u=o.createLinearGradient(0,0,t.width,0);u.addColorStop(0,"#F00");u.addColorStop(1/6,"#FF0");u.addColorStop(2/6,"#0F0");u.addColorStop(3/6,"#0FF");u.addColorStop(4/6,"#00F");u.addColorStop(5/6,"#F0F");u.addColorStop(1,"#F00");o.fillStyle=u;o.fillRect(0,0,t.width,t.height);f=o.createLinearGradient(0,0,0,t.height);switch(r.toLowerCase()){case"s":f.addColorStop(0,"rgba(255,255,255,0)");f.addColorStop(1,"rgba(255,255,255,1)");break;case"v":f.addColorStop(0,"rgba(0,0,0,0)");f.addColorStop(1,"rgba(0,0,0,1)")}o.fillStyle=f;o.fillRect(0,0,t.width,t.height)};s.elm=t;s.draw=h}else n.initVML(),f=document.createElement("div"),f.style.position="relative",f.style.overflow="hidden",e=document.createElement(n._vmlNS+":fill"),e.type="gradient",e.method="linear",e.angle="90",e.colors="16.67% #F0F, 33.33% #00F, 50% #0FF, 66.67% #0F0, 83.33% #FF0",r=document.createElement(n._vmlNS+":rect"),r.style.position="absolute",r.style.left="-1px",r.style.top="-1px",r.stroked=!1,r.appendChild(e),f.appendChild(r),i=document.createElement(n._vmlNS+":fill"),i.type="gradient",i.method="linear",i.angle="180",i.opacity="0",u=document.createElement(n._vmlNS+":rect"),u.style.position="absolute",u.style.left="-1px",u.style.top="-1px",u.stroked=!1,u.appendChild(i),f.appendChild(u),h=function(n,t,o){f.style.width=n+"px";f.style.height=t+"px";r.style.width=u.style.width=n+1+"px";r.style.height=u.style.height=t+1+"px";e.color="#F00";e.color2="#F00";switch(o.toLowerCase()){case"s":i.color=i.color2="#FFF";break;case"v":i.color=i.color2="#000"}},s.elm=f,s.draw=h;return s},createSliderGradient:function(){var f={elm:null,draw:null},r,u,i,o;if(n.isCanvasSupported){var t=document.createElement("canvas"),e=t.getContext("2d"),o=function(n,i,r,u){t.width=n;t.height=i;e.clearRect(0,0,t.width,t.height);var f=e.createLinearGradient(0,0,0,t.height);f.addColorStop(0,r);f.addColorStop(1,u);e.fillStyle=f;e.fillRect(0,0,t.width,t.height)};f.elm=t;f.draw=o}else n.initVML(),r=document.createElement("div"),r.style.position="relative",r.style.overflow="hidden",u=document.createElement(n._vmlNS+":fill"),u.type="gradient",u.method="linear",u.angle="180",i=document.createElement(n._vmlNS+":rect"),i.style.position="absolute",i.style.left="-1px",i.style.top="-1px",i.stroked=!1,i.appendChild(u),r.appendChild(i),o=function(n,t,f,e){r.style.width=n+"px";r.style.height=t+"px";i.style.width=n+1+"px";i.style.height=t+1+"px";u.color=f;u.color2=e},f.elm=r,f.draw=o;return f},leaveValue:1,leaveStyle:2,leavePad:4,leaveSld:8,BoxShadow:function(){var n=function(n,t,i,r,u,f){this.hShadow=n;this.vShadow=t;this.blur=i;this.spread=r;this.color=u;this.inset=!!f};return n.prototype.toString=function(){var n=[Math.round(this.hShadow)+"px",Math.round(this.vShadow)+"px",Math.round(this.blur)+"px",Math.round(this.spread)+"px",this.color];return this.inset&&n.push("inset"),n.join(" ")},n}(),jscolor:function(t,i){function w(n,t,i){var e;n/=255;t/=255;i/=255;var f=Math.min(Math.min(n,t),i),u=Math.max(Math.max(n,t),i),r=u-f;return r===0?[null,0,100*u]:(e=n===f?3+(i-t)/r:t===f?5+(n-i)/r:1+(t-n)/r,[60*(e===6?0:e),100*(r/u),100*u])}function u(n,t,i){var r=255*(i/100);if(n===null)return[r,r,r];n/=60;t/=100;var e=Math.floor(n),o=e%2?n-e:1-(n-e),u=r*(1-t),f=r*(1-t*o);switch(e){case 6:case 0:return[r,f,u];case 1:return[f,r,u];case 2:return[u,r,f];case 3:return[u,f,r];case 4:return[f,u,r];case 5:return[r,u,f]}}function b(){n.unsetClass(r.targetElement,r.activeClass);n.picker.wrap.parentNode.removeChild(n.picker.wrap);delete n.picker.owner}function l(){function s(){var n=r.insetColor.split(/\s+/),i=n.length<2?n[0]:n[1]+" "+n[0]+" "+n[0]+" "+n[1];t.btn.style.borderColor=i}r._processParentElementsInDOM();n.picker||(n.picker={owner:null,wrap:document.createElement("div"),box:document.createElement("div"),boxS:document.createElement("div"),boxB:document.createElement("div"),pad:document.createElement("div"),padB:document.createElement("div"),padM:document.createElement("div"),padPal:n.createPalette(),cross:document.createElement("div"),crossBY:document.createElement("div"),crossBX:document.createElement("div"),crossLY:document.createElement("div"),crossLX:document.createElement("div"),sld:document.createElement("div"),sldB:document.createElement("div"),sldM:document.createElement("div"),sldGrad:n.createSliderGradient(),sldPtrS:document.createElement("div"),sldPtrIB:document.createElement("div"),sldPtrMB:document.createElement("div"),sldPtrOB:document.createElement("div"),btn:document.createElement("div"),btnT:document.createElement("span")},n.picker.pad.appendChild(n.picker.padPal.elm),n.picker.padB.appendChild(n.picker.pad),n.picker.cross.appendChild(n.picker.crossBY),n.picker.cross.appendChild(n.picker.crossBX),n.picker.cross.appendChild(n.picker.crossLY),n.picker.cross.appendChild(n.picker.crossLX),n.picker.padB.appendChild(n.picker.cross),n.picker.box.appendChild(n.picker.padB),n.picker.box.appendChild(n.picker.padM),n.picker.sld.appendChild(n.picker.sldGrad.elm),n.picker.sldB.appendChild(n.picker.sld),n.picker.sldB.appendChild(n.picker.sldPtrOB),n.picker.sldPtrOB.appendChild(n.picker.sldPtrMB),n.picker.sldPtrMB.appendChild(n.picker.sldPtrIB),n.picker.sldPtrIB.appendChild(n.picker.sldPtrS),n.picker.box.appendChild(n.picker.sldB),n.picker.box.appendChild(n.picker.sldM),n.picker.btn.appendChild(n.picker.btnT),n.picker.box.appendChild(n.picker.btn),n.picker.boxB.appendChild(n.picker.box),n.picker.wrap.appendChild(n.picker.boxS),n.picker.wrap.appendChild(n.picker.boxB));var t=n.picker,f=!!n.getSliderComponent(r),i=n.getPickerDims(r),u=2*r.pointerBorderWidth+r.pointerThickness+2*r.crossSize,e=n.getPadToSliderPadding(r),o=Math.min(r.borderRadius,Math.round(r.padding*Math.PI));t.wrap.style.clear="both";t.wrap.style.width=i[0]+2*r.borderWidth+"px";t.wrap.style.height=i[1]+2*r.borderWidth+"px";t.wrap.style.zIndex=r.zIndex;t.box.style.width=i[0]+"px";t.box.style.height=i[1]+"px";t.boxS.style.position="absolute";t.boxS.style.left="0";t.boxS.style.top="0";t.boxS.style.width="100%";t.boxS.style.height="100%";n.setBorderRadius(t.boxS,o+"px");t.boxB.style.position="relative";t.boxB.style.border=r.borderWidth+"px solid";t.boxB.style.borderColor=r.borderColor;t.boxB.style.background=r.backgroundColor;n.setBorderRadius(t.boxB,o+"px");t.padM.style.background=t.sldM.style.background="#FFF";n.setStyle(t.padM,"opacity","0");n.setStyle(t.sldM,"opacity","0");t.pad.style.position="relative";t.pad.style.width=r.width+"px";t.pad.style.height=r.height+"px";t.padPal.draw(r.width,r.height,n.getPadYComponent(r));t.padB.style.position="absolute";t.padB.style.left=r.padding+"px";t.padB.style.top=r.padding+"px";t.padB.style.border=r.insetWidth+"px solid";t.padB.style.borderColor=r.insetColor;t.padM._jscInstance=r;t.padM._jscControlName="pad";t.padM.style.position="absolute";t.padM.style.left="0";t.padM.style.top="0";t.padM.style.width=r.padding+2*r.insetWidth+r.width+e/2+"px";t.padM.style.height=i[1]+"px";t.padM.style.cursor="crosshair";t.cross.style.position="absolute";t.cross.style.left=t.cross.style.top="0";t.cross.style.width=t.cross.style.height=u+"px";t.crossBY.style.position=t.crossBX.style.position="absolute";t.crossBY.style.background=t.crossBX.style.background=r.pointerBorderColor;t.crossBY.style.width=t.crossBX.style.height=2*r.pointerBorderWidth+r.pointerThickness+"px";t.crossBY.style.height=t.crossBX.style.width=u+"px";t.crossBY.style.left=t.crossBX.style.top=Math.floor(u/2)-Math.floor(r.pointerThickness/2)-r.pointerBorderWidth+"px";t.crossBY.style.top=t.crossBX.style.left="0";t.crossLY.style.position=t.crossLX.style.position="absolute";t.crossLY.style.background=t.crossLX.style.background=r.pointerColor;t.crossLY.style.height=t.crossLX.style.width=u-2*r.pointerBorderWidth+"px";t.crossLY.style.width=t.crossLX.style.height=r.pointerThickness+"px";t.crossLY.style.left=t.crossLX.style.top=Math.floor(u/2)-Math.floor(r.pointerThickness/2)+"px";t.crossLY.style.top=t.crossLX.style.left=r.pointerBorderWidth+"px";t.sld.style.overflow="hidden";t.sld.style.width=r.sliderSize+"px";t.sld.style.height=r.height+"px";t.sldGrad.draw(r.sliderSize,r.height,"#000","#000");t.sldB.style.display=f?"block":"none";t.sldB.style.position="absolute";t.sldB.style.right=r.padding+"px";t.sldB.style.top=r.padding+"px";t.sldB.style.border=r.insetWidth+"px solid";t.sldB.style.borderColor=r.insetColor;t.sldM._jscInstance=r;t.sldM._jscControlName="sld";t.sldM.style.display=f?"block":"none";t.sldM.style.position="absolute";t.sldM.style.right="0";t.sldM.style.top="0";t.sldM.style.width=r.sliderSize+e/2+r.padding+2*r.insetWidth+"px";t.sldM.style.height=i[1]+"px";t.sldM.style.cursor="default";t.sldPtrIB.style.border=t.sldPtrOB.style.border=r.pointerBorderWidth+"px solid "+r.pointerBorderColor;t.sldPtrOB.style.position="absolute";t.sldPtrOB.style.left=-(2*r.pointerBorderWidth+r.pointerThickness)+"px";t.sldPtrOB.style.top="0";t.sldPtrMB.style.border=r.pointerThickness+"px solid "+r.pointerColor;t.sldPtrS.style.width=r.sliderSize+"px";t.sldPtrS.style.height=y+"px";t.btn.style.display=r.closable?"block":"none";t.btn.style.position="absolute";t.btn.style.left=r.padding+"px";t.btn.style.bottom=r.padding+"px";t.btn.style.padding="0 15px";t.btn.style.height=r.buttonHeight+"px";t.btn.style.border=r.insetWidth+"px solid";s();t.btn.style.color=r.buttonColor;t.btn.style.font="12px sans-serif";t.btn.style.textAlign="center";try{t.btn.style.cursor="pointer"}catch(c){t.btn.style.cursor="hand"}t.btn.onmousedown=function(){r.hide()};t.btnT.style.lineHeight=r.buttonHeight+"px";t.btnT.innerHTML="";t.btnT.appendChild(document.createTextNode(r.closeText));a();v();n.picker.owner&&n.picker.owner!==r&&n.unsetClass(n.picker.owner.targetElement,r.activeClass);n.picker.owner=r;n.isElementType(h,"body")?n.redrawPosition():n._drawPosition(r,0,0,"relative",!1);t.wrap.parentNode!=h&&h.appendChild(t.wrap);n.setClass(r.targetElement,r.activeClass)}function a(){var t;switch(n.getPadYComponent(r)){case"s":t=1;break;case"v":t=2}var c=Math.round(r.hsv[0]/360*(r.width-1)),l=Math.round((1-r.hsv[t]/100)*(r.height-1)),a=2*r.pointerBorderWidth+r.pointerThickness+2*r.crossSize,o=-Math.floor(a/2);n.picker.cross.style.left=c+o+"px";n.picker.cross.style.top=l+o+"px";switch(n.getSliderComponent(r)){case"s":var i=u(r.hsv[0],100,r.hsv[2]),f=u(r.hsv[0],0,r.hsv[2]),s="rgb("+Math.round(i[0])+","+Math.round(i[1])+","+Math.round(i[2])+")",h="rgb("+Math.round(f[0])+","+Math.round(f[1])+","+Math.round(f[2])+")";n.picker.sldGrad.draw(r.sliderSize,r.height,s,h);break;case"v":var e=u(r.hsv[0],r.hsv[1],100),s="rgb("+Math.round(e[0])+","+Math.round(e[1])+","+Math.round(e[2])+")",h="#000";n.picker.sldGrad.draw(r.sliderSize,r.height,s,h)}}function v(){var i=n.getSliderComponent(r),t,u;if(i){switch(i){case"s":t=1;break;case"v":t=2}u=Math.round((1-r.hsv[t]/100)*(r.height-1));n.picker.sldPtrOB.style.top=u-(2*r.pointerBorderWidth+r.pointerThickness)-Math.floor(y/2)+"px"}}function e(){return n.picker&&n.picker.owner===r}function k(){r.importColor()}var f,o,s,p,c;this.value=null;this.valueElement=t;this.styleElement=t;this.required=!0;this.refine=!0;this.hash=!1;this.uppercase=!0;this.onFineChange=null;this.activeClass="jscolor-active";this.minS=0;this.maxS=100;this.minV=0;this.maxV=100;this.hsv=[0,0,100];this.rgb=[255,255,255];this.width=181;this.height=101;this.showOnClick=!0;this.mode="HSV";this.position="bottom";this.smartPosition=!0;this.sliderSize=16;this.crossSize=8;this.closable=!1;this.closeText="Close";this.buttonColor="#000000";this.buttonHeight=18;this.padding=12;this.backgroundColor="#FFFFFF";this.borderWidth=1;this.borderColor="#BBBBBB";this.borderRadius=8;this.insetWidth=1;this.insetColor="#BBBBBB";this.shadow=!0;this.shadowBlur=15;this.shadowColor="rgba(0,0,0,0.2)";this.pointerColor="#4C4C4C";this.pointerBorderColor="#FFFFFF";this.pointerBorderWidth=1;this.pointerThickness=2;this.zIndex=1e3;this.container=null;for(f in i)i.hasOwnProperty(f)&&(this[f]=i[f]);if(this.hide=function(){e()&&b()},this.show=function(){l()},this.redraw=function(){e()&&l()},this.importColor=function(){this.valueElement?n.isElementType(this.valueElement,"input")?this.refine?!this.required&&/^\s*$/.test(this.valueElement.value)?(this.valueElement.value="",this.styleElement&&(this.styleElement.style.backgroundImage=this.styleElement._jscOrigStyle.backgroundImage,this.styleElement.style.backgroundColor=this.styleElement._jscOrigStyle.backgroundColor,this.styleElement.style.color=this.styleElement._jscOrigStyle.color),this.exportColor(n.leaveValue|n.leaveStyle)):this.fromString(this.valueElement.value)||this.exportColor():this.fromString(this.valueElement.value,n.leaveValue)||(this.styleElement&&(this.styleElement.style.backgroundImage=this.styleElement._jscOrigStyle.backgroundImage,this.styleElement.style.backgroundColor=this.styleElement._jscOrigStyle.backgroundColor,this.styleElement.style.color=this.styleElement._jscOrigStyle.color),this.exportColor(n.leaveValue|n.leaveStyle)):this.exportColor():this.exportColor()},this.exportColor=function(t){if(!(t&n.leaveValue)&&this.valueElement){var i=this.toString();this.uppercase&&(i=i.toUpperCase());this.hash&&(i="#"+i);n.isElementType(this.valueElement,"input")?this.valueElement.value=i:this.valueElement.innerHTML=i}t&n.leaveStyle||this.styleElement&&(this.styleElement.style.backgroundImage="none",this.styleElement.style.backgroundColor="#"+this.toString(),this.styleElement.style.color=this.isLight()?"#000":"#FFF");t&n.leavePad||!e()||a();t&n.leaveSld||!e()||v()},this.fromHSV=function(n,t,i,r){if(n!==null){if(isNaN(n))return!1;n=Math.max(0,Math.min(360,n))}if(t!==null){if(isNaN(t))return!1;t=Math.max(0,Math.min(100,this.maxS,t),this.minS)}if(i!==null){if(isNaN(i))return!1;i=Math.max(0,Math.min(100,this.maxV,i),this.minV)}this.rgb=u(n===null?this.hsv[0]:this.hsv[0]=n,t===null?this.hsv[1]:this.hsv[1]=t,i===null?this.hsv[2]:this.hsv[2]=i);this.exportColor(r)},this.fromRGB=function(n,t,i,r){var f,e;if(n!==null){if(isNaN(n))return!1;n=Math.max(0,Math.min(255,n))}if(t!==null){if(isNaN(t))return!1;t=Math.max(0,Math.min(255,t))}if(i!==null){if(isNaN(i))return!1;i=Math.max(0,Math.min(255,i))}f=w(n===null?this.rgb[0]:n,t===null?this.rgb[1]:t,i===null?this.rgb[2]:i);f[0]!==null&&(this.hsv[0]=Math.max(0,Math.min(360,f[0])));f[2]!==0&&(this.hsv[1]=f[1]===null?null:Math.max(0,this.minS,Math.min(100,this.maxS,f[1])));this.hsv[2]=f[2]===null?null:Math.max(0,this.minV,Math.min(100,this.maxV,f[2]));e=u(this.hsv[0],this.hsv[1],this.hsv[2]);this.rgb[0]=e[0];this.rgb[1]=e[1];this.rgb[2]=e[2];this.exportColor(r)},this.fromString=function(n,t){var i,r,u,f,e,o;if(i=n.match(/^\W*([0-9A-F]{3}([0-9A-F]{3})?)\W*$/i))return i[1].length===6?this.fromRGB(parseInt(i[1].substr(0,2),16),parseInt(i[1].substr(2,2),16),parseInt(i[1].substr(4,2),16),t):this.fromRGB(parseInt(i[1].charAt(0)+i[1].charAt(0),16),parseInt(i[1].charAt(1)+i[1].charAt(1),16),parseInt(i[1].charAt(2)+i[1].charAt(2),16),t),!0;if((i=n.match(/^\W*rgba?\(([^)]*)\)\W*$/i))&&(r=i[1].split(","),u=/^\s*(\d*)(\.\d+)?\s*$/,r.length>=3&&(f=r[0].match(u))&&(e=r[1].match(u))&&(o=r[2].match(u)))){var s=parseFloat((f[1]||"0")+(f[2]||"")),h=parseFloat((e[1]||"0")+(e[2]||"")),c=parseFloat((o[1]||"0")+(o[2]||""));return this.fromRGB(s,h,c,t),!0}return!1},this.toString=function(){return(256|Math.round(this.rgb[0])).toString(16).substr(1)+(256|Math.round(this.rgb[1])).toString(16).substr(1)+(256|Math.round(this.rgb[2])).toString(16).substr(1)},this.toHEXString=function(){return"#"+this.toString().toUpperCase()},this.toRGBString=function(){return"rgb("+Math.round(this.rgb[0])+","+Math.round(this.rgb[1])+","+Math.round(this.rgb[2])+")"},this.isLight=function(){return.213*this.rgb[0]+.715*this.rgb[1]+.072*this.rgb[2]>255/2},this._processParentElementsInDOM=function(){var t,i;if(!this._linkedElementsProcessed){this._linkedElementsProcessed=!0;t=this.targetElement;do i=n.getStyle(t),i&&i.position.toLowerCase()==="fixed"&&(this.fixed=!0),t!==this.targetElement&&(t._jscEventsAttached||(n.attachEvent(t,"scroll",n.onParentScroll),t._jscEventsAttached=!0));while((t=t.parentNode)&&!n.isElementType(t,"body"))}},typeof t=="string"?(o=t,s=document.getElementById(o),s?this.targetElement=s:n.warn("Could not find target element with ID '"+o+"'")):t?this.targetElement=t:n.warn("Invalid target element: '"+t+"'"),this.targetElement._jscLinkedInstance){n.warn("Cannot link jscolor twice to the same element. Skipping.");return}this.targetElement._jscLinkedInstance=this;this.valueElement=n.fetchElement(this.valueElement);this.styleElement=n.fetchElement(this.styleElement);var r=this,h=this.container?n.fetchElement(this.container):document.getElementsByTagName("body")[0],y=3;n.isElementType(this.targetElement,"button")&&(this.targetElement.onclick?(p=this.targetElement.onclick,this.targetElement.onclick=function(n){return p.call(this,n),!1}):this.targetElement.onclick=function(){return!1});this.valueElement&&n.isElementType(this.valueElement,"input")&&(c=function(){r.fromString(r.valueElement.value,n.leaveValue);n.dispatchFineChange(r)},n.attachEvent(this.valueElement,"keyup",c),n.attachEvent(this.valueElement,"input",c),n.attachEvent(this.valueElement,"blur",k),this.valueElement.setAttribute("autocomplete","off"));this.styleElement&&(this.styleElement._jscOrigStyle={backgroundImage:this.styleElement.style.backgroundImage,backgroundColor:this.styleElement.style.backgroundColor,color:this.styleElement.style.color});this.value?this.fromString(this.value)||this.exportColor():this.importColor()}};return n.jscolor.lookupClass="jscolor",n.jscolor.installByClassName=function(t){var i=document.getElementsByTagName("input"),r=document.getElementsByTagName("button");n.tryInstallOnElements(i,t);n.tryInstallOnElements(r,t)},n.register(),n.jscolor}());
-//# sourceMappingURL=jscolor.min.js.map
+if (!window.jscolor) { window.jscolor = (function () {
+
+var jsc = {
+
+
+	register : function () {
+		jsc.attachDOMReadyEvent(jsc.init);
+		jsc.attachEvent(document, 'mousedown', jsc.onDocumentMouseDown);
+		jsc.attachEvent(document, 'touchstart', jsc.onDocumentTouchStart);
+		jsc.attachEvent(window, 'resize', jsc.onWindowResize);
+	},
+
+
+	init : function () {
+		if (jsc.jscolor.lookupClass) {
+			jsc.jscolor.installByClassName(jsc.jscolor.lookupClass);
+		}
+	},
+
+
+	tryInstallOnElements : function (elms, className) {
+		var matchClass = new RegExp('(^|\\s)(' + className + ')(\\s*(\\{[^}]*\\})|\\s|$)', 'i');
+
+		for (var i = 0; i < elms.length; i += 1) {
+			if (elms[i].type !== undefined && elms[i].type.toLowerCase() == 'color') {
+				if (jsc.isColorAttrSupported) {
+					// skip inputs of type 'color' if supported by the browser
+					continue;
+				}
+			}
+			var m;
+			if (!elms[i].jscolor && elms[i].className && (m = elms[i].className.match(matchClass))) {
+				var targetElm = elms[i];
+				var optsStr = null;
+
+				var dataOptions = jsc.getDataAttr(targetElm, 'jscolor');
+				if (dataOptions !== null) {
+					optsStr = dataOptions;
+				} else if (m[4]) {
+					optsStr = m[4];
+				}
+
+				var opts = {};
+				if (optsStr) {
+					try {
+						opts = (new Function ('return (' + optsStr + ')'))();
+					} catch(eParseError) {
+						jsc.warn('Error parsing jscolor options: ' + eParseError + ':\n' + optsStr);
+					}
+				}
+				targetElm.jscolor = new jsc.jscolor(targetElm, opts);
+			}
+		}
+	},
+
+
+	isColorAttrSupported : (function () {
+		var elm = document.createElement('input');
+		if (elm.setAttribute) {
+			elm.setAttribute('type', 'color');
+			if (elm.type.toLowerCase() == 'color') {
+				return true;
+			}
+		}
+		return false;
+	})(),
+
+
+	isCanvasSupported : (function () {
+		var elm = document.createElement('canvas');
+		return !!(elm.getContext && elm.getContext('2d'));
+	})(),
+
+
+	fetchElement : function (mixed) {
+		return typeof mixed === 'string' ? document.getElementById(mixed) : mixed;
+	},
+
+
+	isElementType : function (elm, type) {
+		return elm.nodeName.toLowerCase() === type.toLowerCase();
+	},
+
+
+	getDataAttr : function (el, name) {
+		var attrName = 'data-' + name;
+		var attrValue = el.getAttribute(attrName);
+		if (attrValue !== null) {
+			return attrValue;
+		}
+		return null;
+	},
+
+
+	attachEvent : function (el, evnt, func) {
+		if (el.addEventListener) {
+			el.addEventListener(evnt, func, false);
+		} else if (el.attachEvent) {
+			el.attachEvent('on' + evnt, func);
+		}
+	},
+
+
+	detachEvent : function (el, evnt, func) {
+		if (el.removeEventListener) {
+			el.removeEventListener(evnt, func, false);
+		} else if (el.detachEvent) {
+			el.detachEvent('on' + evnt, func);
+		}
+	},
+
+
+	_attachedGroupEvents : {},
+
+
+	attachGroupEvent : function (groupName, el, evnt, func) {
+		if (!jsc._attachedGroupEvents.hasOwnProperty(groupName)) {
+			jsc._attachedGroupEvents[groupName] = [];
+		}
+		jsc._attachedGroupEvents[groupName].push([el, evnt, func]);
+		jsc.attachEvent(el, evnt, func);
+	},
+
+
+	detachGroupEvents : function (groupName) {
+		if (jsc._attachedGroupEvents.hasOwnProperty(groupName)) {
+			for (var i = 0; i < jsc._attachedGroupEvents[groupName].length; i += 1) {
+				var evt = jsc._attachedGroupEvents[groupName][i];
+				jsc.detachEvent(evt[0], evt[1], evt[2]);
+			}
+			delete jsc._attachedGroupEvents[groupName];
+		}
+	},
+
+
+	attachDOMReadyEvent : function (func) {
+		var fired = false;
+		var fireOnce = function () {
+			if (!fired) {
+				fired = true;
+				func();
+			}
+		};
+
+		if (document.readyState === 'complete') {
+			setTimeout(fireOnce, 1); // async
+			return;
+		}
+
+		if (document.addEventListener) {
+			document.addEventListener('DOMContentLoaded', fireOnce, false);
+
+			// Fallback
+			window.addEventListener('load', fireOnce, false);
+
+		} else if (document.attachEvent) {
+			// IE
+			document.attachEvent('onreadystatechange', function () {
+				if (document.readyState === 'complete') {
+					document.detachEvent('onreadystatechange', arguments.callee);
+					fireOnce();
+				}
+			})
+
+			// Fallback
+			window.attachEvent('onload', fireOnce);
+
+			// IE7/8
+			if (document.documentElement.doScroll && window == window.top) {
+				var tryScroll = function () {
+					if (!document.body) { return; }
+					try {
+						document.documentElement.doScroll('left');
+						fireOnce();
+					} catch (e) {
+						setTimeout(tryScroll, 1);
+					}
+				};
+				tryScroll();
+			}
+		}
+	},
+
+
+	warn : function (msg) {
+		if (window.console && window.console.warn) {
+			window.console.warn(msg);
+		}
+	},
+
+
+	preventDefault : function (e) {
+		if (e.preventDefault) { e.preventDefault(); }
+		e.returnValue = false;
+	},
+
+
+	captureTarget : function (target) {
+		// IE
+		if (target.setCapture) {
+			jsc._capturedTarget = target;
+			jsc._capturedTarget.setCapture();
+		}
+	},
+
+
+	releaseTarget : function () {
+		// IE
+		if (jsc._capturedTarget) {
+			jsc._capturedTarget.releaseCapture();
+			jsc._capturedTarget = null;
+		}
+	},
+
+
+	fireEvent : function (el, evnt) {
+		if (!el) {
+			return;
+		}
+		if (document.createEvent) {
+			var ev = document.createEvent('HTMLEvents');
+			ev.initEvent(evnt, true, true);
+			el.dispatchEvent(ev);
+		} else if (document.createEventObject) {
+			var ev = document.createEventObject();
+			el.fireEvent('on' + evnt, ev);
+		} else if (el['on' + evnt]) { // alternatively use the traditional event model
+			el['on' + evnt]();
+		}
+	},
+
+
+	classNameToList : function (className) {
+		return className.replace(/^\s+|\s+$/g, '').split(/\s+/);
+	},
+
+
+	// The className parameter (str) can only contain a single class name
+	hasClass : function (elm, className) {
+		if (!className) {
+			return false;
+		}
+		return -1 != (' ' + elm.className.replace(/\s+/g, ' ') + ' ').indexOf(' ' + className + ' ');
+	},
+
+
+	// The className parameter (str) can contain multiple class names separated by whitespace
+	setClass : function (elm, className) {
+		var classList = jsc.classNameToList(className);
+		for (var i = 0; i < classList.length; i += 1) {
+			if (!jsc.hasClass(elm, classList[i])) {
+				elm.className += (elm.className ? ' ' : '') + classList[i];
+			}
+		}
+	},
+
+
+	// The className parameter (str) can contain multiple class names separated by whitespace
+	unsetClass : function (elm, className) {
+		var classList = jsc.classNameToList(className);
+		for (var i = 0; i < classList.length; i += 1) {
+			var repl = new RegExp(
+				'^\\s*' + classList[i] + '\\s*|' +
+				'\\s*' + classList[i] + '\\s*$|' +
+				'\\s+' + classList[i] + '(\\s+)',
+				'g'
+			);
+			elm.className = elm.className.replace(repl, '$1');
+		}
+	},
+
+
+	getStyle : function (elm) {
+		return window.getComputedStyle ? window.getComputedStyle(elm) : elm.currentStyle;
+	},
+
+
+	setStyle : (function () {
+		var helper = document.createElement('div');
+		var getSupportedProp = function (names) {
+			for (var i = 0; i < names.length; i += 1) {
+				if (names[i] in helper.style) {
+					return names[i];
+				}
+			}
+		};
+		var props = {
+			borderRadius: getSupportedProp(['borderRadius', 'MozBorderRadius', 'webkitBorderRadius']),
+			boxShadow: getSupportedProp(['boxShadow', 'MozBoxShadow', 'webkitBoxShadow'])
+		};
+		return function (elm, prop, value) {
+			switch (prop.toLowerCase()) {
+			case 'opacity':
+				var alphaOpacity = Math.round(parseFloat(value) * 100);
+				elm.style.opacity = value;
+				elm.style.filter = 'alpha(opacity=' + alphaOpacity + ')';
+				break;
+			default:
+				elm.style[props[prop]] = value;
+				break;
+			}
+		};
+	})(),
+
+
+	setBorderRadius : function (elm, value) {
+		jsc.setStyle(elm, 'borderRadius', value || '0');
+	},
+
+
+	setBoxShadow : function (elm, value) {
+		jsc.setStyle(elm, 'boxShadow', value || 'none');
+	},
+
+
+	getElementPos : function (e, relativeToViewport) {
+		var x=0, y=0;
+		var rect = e.getBoundingClientRect();
+		x = rect.left;
+		y = rect.top;
+		if (!relativeToViewport) {
+			var viewPos = jsc.getViewPos();
+			x += viewPos[0];
+			y += viewPos[1];
+		}
+		return [x, y];
+	},
+
+
+	getElementSize : function (e) {
+		return [e.offsetWidth, e.offsetHeight];
+	},
+
+
+	// get pointer's X/Y coordinates relative to viewport
+	getAbsPointerPos : function (e) {
+		if (!e) { e = window.event; }
+		var x = 0, y = 0;
+		if (typeof e.changedTouches !== 'undefined' && e.changedTouches.length) {
+			// touch devices
+			x = e.changedTouches[0].clientX;
+			y = e.changedTouches[0].clientY;
+		} else if (typeof e.clientX === 'number') {
+			x = e.clientX;
+			y = e.clientY;
+		}
+		return { x: x, y: y };
+	},
+
+
+	// get pointer's X/Y coordinates relative to target element
+	getRelPointerPos : function (e) {
+		if (!e) { e = window.event; }
+		var target = e.target || e.srcElement;
+		var targetRect = target.getBoundingClientRect();
+
+		var x = 0, y = 0;
+
+		var clientX = 0, clientY = 0;
+		if (typeof e.changedTouches !== 'undefined' && e.changedTouches.length) {
+			// touch devices
+			clientX = e.changedTouches[0].clientX;
+			clientY = e.changedTouches[0].clientY;
+		} else if (typeof e.clientX === 'number') {
+			clientX = e.clientX;
+			clientY = e.clientY;
+		}
+
+		x = clientX - targetRect.left;
+		y = clientY - targetRect.top;
+		return { x: x, y: y };
+	},
+
+
+	getViewPos : function () {
+		var doc = document.documentElement;
+		return [
+			(window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0),
+			(window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
+		];
+	},
+
+
+	getViewSize : function () {
+		var doc = document.documentElement;
+		return [
+			(window.innerWidth || doc.clientWidth),
+			(window.innerHeight || doc.clientHeight),
+		];
+	},
+
+
+	redrawPosition : function () {
+
+		if (jsc.picker && jsc.picker.owner) {
+			var thisObj = jsc.picker.owner;
+
+			var tp, vp;
+
+			if (thisObj.fixed) {
+				// Fixed elements are positioned relative to viewport,
+				// therefore we can ignore the scroll offset
+				tp = jsc.getElementPos(thisObj.targetElement, true); // target pos
+				vp = [0, 0]; // view pos
+			} else {
+				tp = jsc.getElementPos(thisObj.targetElement); // target pos
+				vp = jsc.getViewPos(); // view pos
+			}
+
+			var ts = jsc.getElementSize(thisObj.targetElement); // target size
+			var vs = jsc.getViewSize(); // view size
+			var ps = jsc.getPickerOuterDims(thisObj); // picker size
+			var a, b, c;
+			switch (thisObj.position.toLowerCase()) {
+				case 'left': a=1; b=0; c=-1; break;
+				case 'right':a=1; b=0; c=1; break;
+				case 'top':  a=0; b=1; c=-1; break;
+				default:     a=0; b=1; c=1; break;
+			}
+			var l = (ts[b]+ps[b])/2;
+
+			// compute picker position
+			if (!thisObj.smartPosition) {
+				var pp = [
+					tp[a],
+					tp[b]+ts[b]-l+l*c
+				];
+			} else {
+				var pp = [
+					-vp[a]+tp[a]+ps[a] > vs[a] ?
+						(-vp[a]+tp[a]+ts[a]/2 > vs[a]/2 && tp[a]+ts[a]-ps[a] >= 0 ? tp[a]+ts[a]-ps[a] : tp[a]) :
+						tp[a],
+					-vp[b]+tp[b]+ts[b]+ps[b]-l+l*c > vs[b] ?
+						(-vp[b]+tp[b]+ts[b]/2 > vs[b]/2 && tp[b]+ts[b]-l-l*c >= 0 ? tp[b]+ts[b]-l-l*c : tp[b]+ts[b]-l+l*c) :
+						(tp[b]+ts[b]-l+l*c >= 0 ? tp[b]+ts[b]-l+l*c : tp[b]+ts[b]-l-l*c)
+				];
+			}
+
+			var x = pp[a];
+			var y = pp[b];
+			var positionValue = thisObj.fixed ? 'fixed' : 'absolute';
+			var contractShadow =
+				(pp[0] + ps[0] > tp[0] || pp[0] < tp[0] + ts[0]) &&
+				(pp[1] + ps[1] < tp[1] + ts[1]);
+
+			jsc._drawPosition(thisObj, x, y, positionValue, contractShadow);
+		}
+	},
+
+
+	_drawPosition : function (thisObj, x, y, positionValue, contractShadow) {
+		var vShadow = contractShadow ? 0 : thisObj.shadowBlur; // px
+
+		jsc.picker.wrap.style.position = positionValue;
+		jsc.picker.wrap.style.left = x + 'px';
+		jsc.picker.wrap.style.top = y + 'px';
+
+		jsc.setBoxShadow(
+			jsc.picker.boxS,
+			thisObj.shadow ?
+				new jsc.BoxShadow(0, vShadow, thisObj.shadowBlur, 0, thisObj.shadowColor) :
+				null);
+	},
+
+
+	getPickerDims : function (thisObj) {
+		var displaySlider = !!jsc.getSliderComponent(thisObj);
+		var dims = [
+			2 * thisObj.insetWidth + 2 * thisObj.padding + thisObj.width +
+				(displaySlider ? 2 * thisObj.insetWidth + jsc.getPadToSliderPadding(thisObj) + thisObj.sliderSize : 0),
+			2 * thisObj.insetWidth + 2 * thisObj.padding + thisObj.height +
+				(thisObj.closable ? 2 * thisObj.insetWidth + thisObj.padding + thisObj.buttonHeight : 0)
+		];
+		return dims;
+	},
+
+
+	getPickerOuterDims : function (thisObj) {
+		var dims = jsc.getPickerDims(thisObj);
+		return [
+			dims[0] + 2 * thisObj.borderWidth,
+			dims[1] + 2 * thisObj.borderWidth
+		];
+	},
+
+
+	getPadToSliderPadding : function (thisObj) {
+		return Math.max(thisObj.padding, 1.5 * (2 * thisObj.pointerBorderWidth + thisObj.pointerThickness));
+	},
+
+
+	getPadYComponent : function (thisObj) {
+		switch (thisObj.mode.charAt(1).toLowerCase()) {
+			case 'v': return 'v'; break;
+		}
+		return 's';
+	},
+
+
+	getSliderComponent : function (thisObj) {
+		if (thisObj.mode.length > 2) {
+			switch (thisObj.mode.charAt(2).toLowerCase()) {
+				case 's': return 's'; break;
+				case 'v': return 'v'; break;
+			}
+		}
+		return null;
+	},
+
+
+	onDocumentMouseDown : function (e) {
+		if (!e) { e = window.event; }
+		var target = e.target || e.srcElement;
+
+		if (target._jscLinkedInstance) {
+			if (target._jscLinkedInstance.showOnClick) {
+				target._jscLinkedInstance.show();
+			}
+		} else if (target._jscControlName) {
+			jsc.onControlPointerStart(e, target, target._jscControlName, 'mouse');
+		} else {
+			// Mouse is outside the picker controls -> hide the color picker!
+			if (jsc.picker && jsc.picker.owner) {
+				jsc.picker.owner.hide();
+			}
+		}
+	},
+
+
+	onDocumentTouchStart : function (e) {
+		if (!e) { e = window.event; }
+		var target = e.target || e.srcElement;
+
+		if (target._jscLinkedInstance) {
+			if (target._jscLinkedInstance.showOnClick) {
+				target._jscLinkedInstance.show();
+			}
+		} else if (target._jscControlName) {
+			jsc.onControlPointerStart(e, target, target._jscControlName, 'touch');
+		} else {
+			if (jsc.picker && jsc.picker.owner) {
+				jsc.picker.owner.hide();
+			}
+		}
+	},
+
+
+	onWindowResize : function (e) {
+		jsc.redrawPosition();
+	},
+
+
+	onParentScroll : function (e) {
+		// hide the picker when one of the parent elements is scrolled
+		if (jsc.picker && jsc.picker.owner) {
+			jsc.picker.owner.hide();
+		}
+	},
+
+
+	_pointerMoveEvent : {
+		mouse: 'mousemove',
+		touch: 'touchmove'
+	},
+	_pointerEndEvent : {
+		mouse: 'mouseup',
+		touch: 'touchend'
+	},
+
+
+	_pointerOrigin : null,
+	_capturedTarget : null,
+
+
+	onControlPointerStart : function (e, target, controlName, pointerType) {
+		var thisObj = target._jscInstance;
+
+		jsc.preventDefault(e);
+		jsc.captureTarget(target);
+
+		var registerDragEvents = function (doc, offset) {
+			jsc.attachGroupEvent('drag', doc, jsc._pointerMoveEvent[pointerType],
+				jsc.onDocumentPointerMove(e, target, controlName, pointerType, offset));
+			jsc.attachGroupEvent('drag', doc, jsc._pointerEndEvent[pointerType],
+				jsc.onDocumentPointerEnd(e, target, controlName, pointerType));
+		};
+
+		registerDragEvents(document, [0, 0]);
+
+		if (window.parent && window.frameElement) {
+			var rect = window.frameElement.getBoundingClientRect();
+			var ofs = [-rect.left, -rect.top];
+			registerDragEvents(window.parent.window.document, ofs);
+		}
+
+		var abs = jsc.getAbsPointerPos(e);
+		var rel = jsc.getRelPointerPos(e);
+		jsc._pointerOrigin = {
+			x: abs.x - rel.x,
+			y: abs.y - rel.y
+		};
+
+		switch (controlName) {
+		case 'pad':
+			// if the slider is at the bottom, move it up
+			switch (jsc.getSliderComponent(thisObj)) {
+			case 's': if (thisObj.hsv[1] === 0) { thisObj.fromHSV(null, 100, null); }; break;
+			case 'v': if (thisObj.hsv[2] === 0) { thisObj.fromHSV(null, null, 100); }; break;
+			}
+			jsc.setPad(thisObj, e, 0, 0);
+			break;
+
+		case 'sld':
+			jsc.setSld(thisObj, e, 0);
+			break;
+		}
+
+		jsc.dispatchFineChange(thisObj);
+	},
+
+
+	onDocumentPointerMove : function (e, target, controlName, pointerType, offset) {
+		return function (e) {
+			var thisObj = target._jscInstance;
+			switch (controlName) {
+			case 'pad':
+				if (!e) { e = window.event; }
+				jsc.setPad(thisObj, e, offset[0], offset[1]);
+				jsc.dispatchFineChange(thisObj);
+				break;
+
+			case 'sld':
+				if (!e) { e = window.event; }
+				jsc.setSld(thisObj, e, offset[1]);
+				jsc.dispatchFineChange(thisObj);
+				break;
+			}
+		}
+	},
+
+
+	onDocumentPointerEnd : function (e, target, controlName, pointerType) {
+		return function (e) {
+			var thisObj = target._jscInstance;
+			jsc.detachGroupEvents('drag');
+			jsc.releaseTarget();
+			// Always dispatch changes after detaching outstanding mouse handlers,
+			// in case some user interaction will occur in user's onchange callback
+			// that would intrude with current mouse events
+			jsc.dispatchChange(thisObj);
+		};
+	},
+
+
+	dispatchChange : function (thisObj) {
+		if (thisObj.valueElement) {
+			if (jsc.isElementType(thisObj.valueElement, 'input')) {
+				jsc.fireEvent(thisObj.valueElement, 'change');
+			}
+		}
+	},
+
+
+	dispatchFineChange : function (thisObj) {
+		if (thisObj.onFineChange) {
+			var callback;
+			if (typeof thisObj.onFineChange === 'string') {
+				callback = new Function (thisObj.onFineChange);
+			} else {
+				callback = thisObj.onFineChange;
+			}
+			callback.call(thisObj);
+		}
+	},
+
+
+	setPad : function (thisObj, e, ofsX, ofsY) {
+		var pointerAbs = jsc.getAbsPointerPos(e);
+		var x = ofsX + pointerAbs.x - jsc._pointerOrigin.x - thisObj.padding - thisObj.insetWidth;
+		var y = ofsY + pointerAbs.y - jsc._pointerOrigin.y - thisObj.padding - thisObj.insetWidth;
+
+		var xVal = x * (360 / (thisObj.width - 1));
+		var yVal = 100 - (y * (100 / (thisObj.height - 1)));
+
+		switch (jsc.getPadYComponent(thisObj)) {
+		case 's': thisObj.fromHSV(xVal, yVal, null, jsc.leaveSld); break;
+		case 'v': thisObj.fromHSV(xVal, null, yVal, jsc.leaveSld); break;
+		}
+	},
+
+
+	setSld : function (thisObj, e, ofsY) {
+		var pointerAbs = jsc.getAbsPointerPos(e);
+		var y = ofsY + pointerAbs.y - jsc._pointerOrigin.y - thisObj.padding - thisObj.insetWidth;
+
+		var yVal = 100 - (y * (100 / (thisObj.height - 1)));
+
+		switch (jsc.getSliderComponent(thisObj)) {
+		case 's': thisObj.fromHSV(null, yVal, null, jsc.leavePad); break;
+		case 'v': thisObj.fromHSV(null, null, yVal, jsc.leavePad); break;
+		}
+	},
+
+
+	_vmlNS : 'jsc_vml_',
+	_vmlCSS : 'jsc_vml_css_',
+	_vmlReady : false,
+
+
+	initVML : function () {
+		if (!jsc._vmlReady) {
+			// init VML namespace
+			var doc = document;
+			if (!doc.namespaces[jsc._vmlNS]) {
+				doc.namespaces.add(jsc._vmlNS, 'urn:schemas-microsoft-com:vml');
+			}
+			if (!doc.styleSheets[jsc._vmlCSS]) {
+				var tags = ['shape', 'shapetype', 'group', 'background', 'path', 'formulas', 'handles', 'fill', 'stroke', 'shadow', 'textbox', 'textpath', 'imagedata', 'line', 'polyline', 'curve', 'rect', 'roundrect', 'oval', 'arc', 'image'];
+				var ss = doc.createStyleSheet();
+				ss.owningElement.id = jsc._vmlCSS;
+				for (var i = 0; i < tags.length; i += 1) {
+					ss.addRule(jsc._vmlNS + '\\:' + tags[i], 'behavior:url(#default#VML);');
+				}
+			}
+			jsc._vmlReady = true;
+		}
+	},
+
+
+	createPalette : function () {
+
+		var paletteObj = {
+			elm: null,
+			draw: null
+		};
+
+		if (jsc.isCanvasSupported) {
+			// Canvas implementation for modern browsers
+
+			var canvas = document.createElement('canvas');
+			var ctx = canvas.getContext('2d');
+
+			var drawFunc = function (width, height, type) {
+				canvas.width = width;
+				canvas.height = height;
+
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+				var hGrad = ctx.createLinearGradient(0, 0, canvas.width, 0);
+				hGrad.addColorStop(0 / 6, '#F00');
+				hGrad.addColorStop(1 / 6, '#FF0');
+				hGrad.addColorStop(2 / 6, '#0F0');
+				hGrad.addColorStop(3 / 6, '#0FF');
+				hGrad.addColorStop(4 / 6, '#00F');
+				hGrad.addColorStop(5 / 6, '#F0F');
+				hGrad.addColorStop(6 / 6, '#F00');
+
+				ctx.fillStyle = hGrad;
+				ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+				var vGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+				switch (type.toLowerCase()) {
+				case 's':
+					vGrad.addColorStop(0, 'rgba(255,255,255,0)');
+					vGrad.addColorStop(1, 'rgba(255,255,255,1)');
+					break;
+				case 'v':
+					vGrad.addColorStop(0, 'rgba(0,0,0,0)');
+					vGrad.addColorStop(1, 'rgba(0,0,0,1)');
+					break;
+				}
+				ctx.fillStyle = vGrad;
+				ctx.fillRect(0, 0, canvas.width, canvas.height);
+			};
+
+			paletteObj.elm = canvas;
+			paletteObj.draw = drawFunc;
+
+		} else {
+			// VML fallback for IE 7 and 8
+
+			jsc.initVML();
+
+			var vmlContainer = document.createElement('div');
+			vmlContainer.style.position = 'relative';
+			vmlContainer.style.overflow = 'hidden';
+
+			var hGrad = document.createElement(jsc._vmlNS + ':fill');
+			hGrad.type = 'gradient';
+			hGrad.method = 'linear';
+			hGrad.angle = '90';
+			hGrad.colors = '16.67% #F0F, 33.33% #00F, 50% #0FF, 66.67% #0F0, 83.33% #FF0'
+
+			var hRect = document.createElement(jsc._vmlNS + ':rect');
+			hRect.style.position = 'absolute';
+			hRect.style.left = -1 + 'px';
+			hRect.style.top = -1 + 'px';
+			hRect.stroked = false;
+			hRect.appendChild(hGrad);
+			vmlContainer.appendChild(hRect);
+
+			var vGrad = document.createElement(jsc._vmlNS + ':fill');
+			vGrad.type = 'gradient';
+			vGrad.method = 'linear';
+			vGrad.angle = '180';
+			vGrad.opacity = '0';
+
+			var vRect = document.createElement(jsc._vmlNS + ':rect');
+			vRect.style.position = 'absolute';
+			vRect.style.left = -1 + 'px';
+			vRect.style.top = -1 + 'px';
+			vRect.stroked = false;
+			vRect.appendChild(vGrad);
+			vmlContainer.appendChild(vRect);
+
+			var drawFunc = function (width, height, type) {
+				vmlContainer.style.width = width + 'px';
+				vmlContainer.style.height = height + 'px';
+
+				hRect.style.width =
+				vRect.style.width =
+					(width + 1) + 'px';
+				hRect.style.height =
+				vRect.style.height =
+					(height + 1) + 'px';
+
+				// Colors must be specified during every redraw, otherwise IE won't display
+				// a full gradient during a subsequential redraw
+				hGrad.color = '#F00';
+				hGrad.color2 = '#F00';
+
+				switch (type.toLowerCase()) {
+				case 's':
+					vGrad.color = vGrad.color2 = '#FFF';
+					break;
+				case 'v':
+					vGrad.color = vGrad.color2 = '#000';
+					break;
+				}
+			};
+			
+			paletteObj.elm = vmlContainer;
+			paletteObj.draw = drawFunc;
+		}
+
+		return paletteObj;
+	},
+
+
+	createSliderGradient : function () {
+
+		var sliderObj = {
+			elm: null,
+			draw: null
+		};
+
+		if (jsc.isCanvasSupported) {
+			// Canvas implementation for modern browsers
+
+			var canvas = document.createElement('canvas');
+			var ctx = canvas.getContext('2d');
+
+			var drawFunc = function (width, height, color1, color2) {
+				canvas.width = width;
+				canvas.height = height;
+
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+				var grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+				grad.addColorStop(0, color1);
+				grad.addColorStop(1, color2);
+
+				ctx.fillStyle = grad;
+				ctx.fillRect(0, 0, canvas.width, canvas.height);
+			};
+
+			sliderObj.elm = canvas;
+			sliderObj.draw = drawFunc;
+
+		} else {
+			// VML fallback for IE 7 and 8
+
+			jsc.initVML();
+
+			var vmlContainer = document.createElement('div');
+			vmlContainer.style.position = 'relative';
+			vmlContainer.style.overflow = 'hidden';
+
+			var grad = document.createElement(jsc._vmlNS + ':fill');
+			grad.type = 'gradient';
+			grad.method = 'linear';
+			grad.angle = '180';
+
+			var rect = document.createElement(jsc._vmlNS + ':rect');
+			rect.style.position = 'absolute';
+			rect.style.left = -1 + 'px';
+			rect.style.top = -1 + 'px';
+			rect.stroked = false;
+			rect.appendChild(grad);
+			vmlContainer.appendChild(rect);
+
+			var drawFunc = function (width, height, color1, color2) {
+				vmlContainer.style.width = width + 'px';
+				vmlContainer.style.height = height + 'px';
+
+				rect.style.width = (width + 1) + 'px';
+				rect.style.height = (height + 1) + 'px';
+
+				grad.color = color1;
+				grad.color2 = color2;
+			};
+			
+			sliderObj.elm = vmlContainer;
+			sliderObj.draw = drawFunc;
+		}
+
+		return sliderObj;
+	},
+
+
+	leaveValue : 1<<0,
+	leaveStyle : 1<<1,
+	leavePad : 1<<2,
+	leaveSld : 1<<3,
+
+
+	BoxShadow : (function () {
+		var BoxShadow = function (hShadow, vShadow, blur, spread, color, inset) {
+			this.hShadow = hShadow;
+			this.vShadow = vShadow;
+			this.blur = blur;
+			this.spread = spread;
+			this.color = color;
+			this.inset = !!inset;
+		};
+
+		BoxShadow.prototype.toString = function () {
+			var vals = [
+				Math.round(this.hShadow) + 'px',
+				Math.round(this.vShadow) + 'px',
+				Math.round(this.blur) + 'px',
+				Math.round(this.spread) + 'px',
+				this.color
+			];
+			if (this.inset) {
+				vals.push('inset');
+			}
+			return vals.join(' ');
+		};
+
+		return BoxShadow;
+	})(),
+
+
+	//
+	// Usage:
+	// var myColor = new jscolor(<targetElement> [, <options>])
+	//
+
+	jscolor : function (targetElement, options) {
+
+		// General options
+		//
+		this.value = null; // initial HEX color. To change it later, use methods fromString(), fromHSV() and fromRGB()
+		this.valueElement = targetElement; // element that will be used to display and input the color code
+		this.styleElement = targetElement; // element that will preview the picked color using CSS backgroundColor
+		this.required = true; // whether the associated text <input> can be left empty
+		this.refine = true; // whether to refine the entered color code (e.g. uppercase it and remove whitespace)
+		this.hash = false; // whether to prefix the HEX color code with # symbol
+		this.uppercase = true; // whether to uppercase the color code
+		this.onFineChange = null; // called instantly every time the color changes (value can be either a function or a string with javascript code)
+		this.activeClass = 'jscolor-active'; // class to be set to the target element when a picker window is open on it
+		this.minS = 0; // min allowed saturation (0 - 100)
+		this.maxS = 100; // max allowed saturation (0 - 100)
+		this.minV = 0; // min allowed value (brightness) (0 - 100)
+		this.maxV = 100; // max allowed value (brightness) (0 - 100)
+
+		// Accessing the picked color
+		//
+		this.hsv = [0, 0, 100]; // read-only  [0-360, 0-100, 0-100]
+		this.rgb = [255, 255, 255]; // read-only  [0-255, 0-255, 0-255]
+
+		// Color Picker options
+		//
+		this.width = 181; // width of color palette (in px)
+		this.height = 101; // height of color palette (in px)
+		this.showOnClick = true; // whether to display the color picker when user clicks on its target element
+		this.mode = 'HSV'; // HSV | HVS | HS | HV - layout of the color picker controls
+		this.position = 'bottom'; // left | right | top | bottom - position relative to the target element
+		this.smartPosition = true; // automatically change picker position when there is not enough space for it
+		this.sliderSize = 16; // px
+		this.crossSize = 8; // px
+		this.closable = false; // whether to display the Close button
+		this.closeText = 'Close';
+		this.buttonColor = '#000000'; // CSS color
+		this.buttonHeight = 18; // px
+		this.padding = 12; // px
+		this.backgroundColor = '#FFFFFF'; // CSS color
+		this.borderWidth = 1; // px
+		this.borderColor = '#BBBBBB'; // CSS color
+		this.borderRadius = 8; // px
+		this.insetWidth = 1; // px
+		this.insetColor = '#BBBBBB'; // CSS color
+		this.shadow = true; // whether to display shadow
+		this.shadowBlur = 15; // px
+		this.shadowColor = 'rgba(0,0,0,0.2)'; // CSS color
+		this.pointerColor = '#4C4C4C'; // px
+		this.pointerBorderColor = '#FFFFFF'; // px
+        this.pointerBorderWidth = 1; // px
+        this.pointerThickness = 2; // px
+		this.zIndex = 1000;
+		this.container = null; // where to append the color picker (BODY element by default)
+
+
+		for (var opt in options) {
+			if (options.hasOwnProperty(opt)) {
+				this[opt] = options[opt];
+			}
+		}
+
+
+		this.hide = function () {
+			if (isPickerOwner()) {
+				detachPicker();
+			}
+		};
+
+
+		this.show = function () {
+			drawPicker();
+		};
+
+
+		this.redraw = function () {
+			if (isPickerOwner()) {
+				drawPicker();
+			}
+		};
+
+
+		this.importColor = function () {
+			if (!this.valueElement) {
+				this.exportColor();
+			} else {
+				if (jsc.isElementType(this.valueElement, 'input')) {
+					if (!this.refine) {
+						if (!this.fromString(this.valueElement.value, jsc.leaveValue)) {
+							if (this.styleElement) {
+								this.styleElement.style.backgroundImage = this.styleElement._jscOrigStyle.backgroundImage;
+								this.styleElement.style.backgroundColor = this.styleElement._jscOrigStyle.backgroundColor;
+								this.styleElement.style.color = this.styleElement._jscOrigStyle.color;
+							}
+							this.exportColor(jsc.leaveValue | jsc.leaveStyle);
+						}
+					} else if (!this.required && /^\s*$/.test(this.valueElement.value)) {
+						this.valueElement.value = '';
+						if (this.styleElement) {
+							this.styleElement.style.backgroundImage = this.styleElement._jscOrigStyle.backgroundImage;
+							this.styleElement.style.backgroundColor = this.styleElement._jscOrigStyle.backgroundColor;
+							this.styleElement.style.color = this.styleElement._jscOrigStyle.color;
+						}
+						this.exportColor(jsc.leaveValue | jsc.leaveStyle);
+
+					} else if (this.fromString(this.valueElement.value)) {
+						// managed to import color successfully from the value -> OK, don't do anything
+					} else {
+						this.exportColor();
+					}
+				} else {
+					// not an input element -> doesn't have any value
+					this.exportColor();
+				}
+			}
+		};
+
+
+		this.exportColor = function (flags) {
+			if (!(flags & jsc.leaveValue) && this.valueElement) {
+				var value = this.toString();
+				if (this.uppercase) { value = value.toUpperCase(); }
+				if (this.hash) { value = '#' + value; }
+
+				if (jsc.isElementType(this.valueElement, 'input')) {
+					this.valueElement.value = value;
+				} else {
+					this.valueElement.innerHTML = value;
+				}
+			}
+			if (!(flags & jsc.leaveStyle)) {
+				if (this.styleElement) {
+					this.styleElement.style.backgroundImage = 'none';
+					this.styleElement.style.backgroundColor = '#' + this.toString();
+					this.styleElement.style.color = this.isLight() ? '#000' : '#FFF';
+				}
+			}
+			if (!(flags & jsc.leavePad) && isPickerOwner()) {
+				redrawPad();
+			}
+			if (!(flags & jsc.leaveSld) && isPickerOwner()) {
+				redrawSld();
+			}
+		};
+
+
+		// h: 0-360
+		// s: 0-100
+		// v: 0-100
+		//
+		this.fromHSV = function (h, s, v, flags) { // null = don't change
+			if (h !== null) {
+				if (isNaN(h)) { return false; }
+				h = Math.max(0, Math.min(360, h));
+			}
+			if (s !== null) {
+				if (isNaN(s)) { return false; }
+				s = Math.max(0, Math.min(100, this.maxS, s), this.minS);
+			}
+			if (v !== null) {
+				if (isNaN(v)) { return false; }
+				v = Math.max(0, Math.min(100, this.maxV, v), this.minV);
+			}
+
+			this.rgb = HSV_RGB(
+				h===null ? this.hsv[0] : (this.hsv[0]=h),
+				s===null ? this.hsv[1] : (this.hsv[1]=s),
+				v===null ? this.hsv[2] : (this.hsv[2]=v)
+			);
+
+			this.exportColor(flags);
+		};
+
+
+		// r: 0-255
+		// g: 0-255
+		// b: 0-255
+		//
+		this.fromRGB = function (r, g, b, flags) { // null = don't change
+			if (r !== null) {
+				if (isNaN(r)) { return false; }
+				r = Math.max(0, Math.min(255, r));
+			}
+			if (g !== null) {
+				if (isNaN(g)) { return false; }
+				g = Math.max(0, Math.min(255, g));
+			}
+			if (b !== null) {
+				if (isNaN(b)) { return false; }
+				b = Math.max(0, Math.min(255, b));
+			}
+
+			var hsv = RGB_HSV(
+				r===null ? this.rgb[0] : r,
+				g===null ? this.rgb[1] : g,
+				b===null ? this.rgb[2] : b
+			);
+			if (hsv[0] !== null) {
+				this.hsv[0] = Math.max(0, Math.min(360, hsv[0]));
+			}
+			if (hsv[2] !== 0) {
+				this.hsv[1] = hsv[1]===null ? null : Math.max(0, this.minS, Math.min(100, this.maxS, hsv[1]));
+			}
+			this.hsv[2] = hsv[2]===null ? null : Math.max(0, this.minV, Math.min(100, this.maxV, hsv[2]));
+
+			// update RGB according to final HSV, as some values might be trimmed
+			var rgb = HSV_RGB(this.hsv[0], this.hsv[1], this.hsv[2]);
+			this.rgb[0] = rgb[0];
+			this.rgb[1] = rgb[1];
+			this.rgb[2] = rgb[2];
+
+			this.exportColor(flags);
+		};
+
+
+		this.fromString = function (str, flags) {
+			var m;
+			if (m = str.match(/^\W*([0-9A-F]{3}([0-9A-F]{3})?)\W*$/i)) {
+				// HEX notation
+				//
+
+				if (m[1].length === 6) {
+					// 6-char notation
+					this.fromRGB(
+						parseInt(m[1].substr(0,2),16),
+						parseInt(m[1].substr(2,2),16),
+						parseInt(m[1].substr(4,2),16),
+						flags
+					);
+				} else {
+					// 3-char notation
+					this.fromRGB(
+						parseInt(m[1].charAt(0) + m[1].charAt(0),16),
+						parseInt(m[1].charAt(1) + m[1].charAt(1),16),
+						parseInt(m[1].charAt(2) + m[1].charAt(2),16),
+						flags
+					);
+				}
+				return true;
+
+			} else if (m = str.match(/^\W*rgba?\(([^)]*)\)\W*$/i)) {
+				var params = m[1].split(',');
+				var re = /^\s*(\d*)(\.\d+)?\s*$/;
+				var mR, mG, mB;
+				if (
+					params.length >= 3 &&
+					(mR = params[0].match(re)) &&
+					(mG = params[1].match(re)) &&
+					(mB = params[2].match(re))
+				) {
+					var r = parseFloat((mR[1] || '0') + (mR[2] || ''));
+					var g = parseFloat((mG[1] || '0') + (mG[2] || ''));
+					var b = parseFloat((mB[1] || '0') + (mB[2] || ''));
+					this.fromRGB(r, g, b, flags);
+					return true;
+				}
+			}
+			return false;
+		};
+
+
+		this.toString = function () {
+			return (
+				(0x100 | Math.round(this.rgb[0])).toString(16).substr(1) +
+				(0x100 | Math.round(this.rgb[1])).toString(16).substr(1) +
+				(0x100 | Math.round(this.rgb[2])).toString(16).substr(1)
+			);
+		};
+
+
+		this.toHEXString = function () {
+			return '#' + this.toString().toUpperCase();
+		};
+
+
+		this.toRGBString = function () {
+			return ('rgb(' +
+				Math.round(this.rgb[0]) + ',' +
+				Math.round(this.rgb[1]) + ',' +
+				Math.round(this.rgb[2]) + ')'
+			);
+		};
+
+
+		this.isLight = function () {
+			return (
+				0.213 * this.rgb[0] +
+				0.715 * this.rgb[1] +
+				0.072 * this.rgb[2] >
+				255 / 2
+			);
+		};
+
+
+		this._processParentElementsInDOM = function () {
+			if (this._linkedElementsProcessed) { return; }
+			this._linkedElementsProcessed = true;
+
+			var elm = this.targetElement;
+			do {
+				// If the target element or one of its parent nodes has fixed position,
+				// then use fixed positioning instead
+				//
+				// Note: In Firefox, getComputedStyle returns null in a hidden iframe,
+				// that's why we need to check if the returned style object is non-empty
+				var currStyle = jsc.getStyle(elm);
+				if (currStyle && currStyle.position.toLowerCase() === 'fixed') {
+					this.fixed = true;
+				}
+
+				if (elm !== this.targetElement) {
+					// Ensure to attach onParentScroll only once to each parent element
+					// (multiple targetElements can share the same parent nodes)
+					//
+					// Note: It's not just offsetParents that can be scrollable,
+					// that's why we loop through all parent nodes
+					if (!elm._jscEventsAttached) {
+						jsc.attachEvent(elm, 'scroll', jsc.onParentScroll);
+						elm._jscEventsAttached = true;
+					}
+				}
+			} while ((elm = elm.parentNode) && !jsc.isElementType(elm, 'body'));
+		};
+
+
+		// r: 0-255
+		// g: 0-255
+		// b: 0-255
+		//
+		// returns: [ 0-360, 0-100, 0-100 ]
+		//
+		function RGB_HSV (r, g, b) {
+			r /= 255;
+			g /= 255;
+			b /= 255;
+			var n = Math.min(Math.min(r,g),b);
+			var v = Math.max(Math.max(r,g),b);
+			var m = v - n;
+			if (m === 0) { return [ null, 0, 100 * v ]; }
+			var h = r===n ? 3+(b-g)/m : (g===n ? 5+(r-b)/m : 1+(g-r)/m);
+			return [
+				60 * (h===6?0:h),
+				100 * (m/v),
+				100 * v
+			];
+		}
+
+
+		// h: 0-360
+		// s: 0-100
+		// v: 0-100
+		//
+		// returns: [ 0-255, 0-255, 0-255 ]
+		//
+		function HSV_RGB (h, s, v) {
+			var u = 255 * (v / 100);
+
+			if (h === null) {
+				return [ u, u, u ];
+			}
+
+			h /= 60;
+			s /= 100;
+
+			var i = Math.floor(h);
+			var f = i%2 ? h-i : 1-(h-i);
+			var m = u * (1 - s);
+			var n = u * (1 - s * f);
+			switch (i) {
+				case 6:
+				case 0: return [u,n,m];
+				case 1: return [n,u,m];
+				case 2: return [m,u,n];
+				case 3: return [m,n,u];
+				case 4: return [n,m,u];
+				case 5: return [u,m,n];
+			}
+		}
+
+
+		function detachPicker () {
+			jsc.unsetClass(THIS.targetElement, THIS.activeClass);
+			jsc.picker.wrap.parentNode.removeChild(jsc.picker.wrap);
+			delete jsc.picker.owner;
+		}
+
+
+		function drawPicker () {
+
+			// At this point, when drawing the picker, we know what the parent elements are
+			// and we can do all related DOM operations, such as registering events on them
+			// or checking their positioning
+			THIS._processParentElementsInDOM();
+
+			if (!jsc.picker) {
+				jsc.picker = {
+					owner: null,
+					wrap : document.createElement('div'),
+					box : document.createElement('div'),
+					boxS : document.createElement('div'), // shadow area
+					boxB : document.createElement('div'), // border
+					pad : document.createElement('div'),
+					padB : document.createElement('div'), // border
+					padM : document.createElement('div'), // mouse/touch area
+					padPal : jsc.createPalette(),
+					cross : document.createElement('div'),
+					crossBY : document.createElement('div'), // border Y
+					crossBX : document.createElement('div'), // border X
+					crossLY : document.createElement('div'), // line Y
+					crossLX : document.createElement('div'), // line X
+					sld : document.createElement('div'),
+					sldB : document.createElement('div'), // border
+					sldM : document.createElement('div'), // mouse/touch area
+					sldGrad : jsc.createSliderGradient(),
+					sldPtrS : document.createElement('div'), // slider pointer spacer
+					sldPtrIB : document.createElement('div'), // slider pointer inner border
+					sldPtrMB : document.createElement('div'), // slider pointer middle border
+					sldPtrOB : document.createElement('div'), // slider pointer outer border
+					btn : document.createElement('div'),
+					btnT : document.createElement('span') // text
+				};
+
+				jsc.picker.pad.appendChild(jsc.picker.padPal.elm);
+				jsc.picker.padB.appendChild(jsc.picker.pad);
+				jsc.picker.cross.appendChild(jsc.picker.crossBY);
+				jsc.picker.cross.appendChild(jsc.picker.crossBX);
+				jsc.picker.cross.appendChild(jsc.picker.crossLY);
+				jsc.picker.cross.appendChild(jsc.picker.crossLX);
+				jsc.picker.padB.appendChild(jsc.picker.cross);
+				jsc.picker.box.appendChild(jsc.picker.padB);
+				jsc.picker.box.appendChild(jsc.picker.padM);
+
+				jsc.picker.sld.appendChild(jsc.picker.sldGrad.elm);
+				jsc.picker.sldB.appendChild(jsc.picker.sld);
+				jsc.picker.sldB.appendChild(jsc.picker.sldPtrOB);
+				jsc.picker.sldPtrOB.appendChild(jsc.picker.sldPtrMB);
+				jsc.picker.sldPtrMB.appendChild(jsc.picker.sldPtrIB);
+				jsc.picker.sldPtrIB.appendChild(jsc.picker.sldPtrS);
+				jsc.picker.box.appendChild(jsc.picker.sldB);
+				jsc.picker.box.appendChild(jsc.picker.sldM);
+
+				jsc.picker.btn.appendChild(jsc.picker.btnT);
+				jsc.picker.box.appendChild(jsc.picker.btn);
+
+				jsc.picker.boxB.appendChild(jsc.picker.box);
+				jsc.picker.wrap.appendChild(jsc.picker.boxS);
+				jsc.picker.wrap.appendChild(jsc.picker.boxB);
+			}
+
+			var p = jsc.picker;
+
+			var displaySlider = !!jsc.getSliderComponent(THIS);
+			var dims = jsc.getPickerDims(THIS);
+			var crossOuterSize = (2 * THIS.pointerBorderWidth + THIS.pointerThickness + 2 * THIS.crossSize);
+			var padToSliderPadding = jsc.getPadToSliderPadding(THIS);
+			var borderRadius = Math.min(
+				THIS.borderRadius,
+				Math.round(THIS.padding * Math.PI)); // px
+			var padCursor = 'crosshair';
+
+			// wrap
+			p.wrap.style.clear = 'both';
+			p.wrap.style.width = (dims[0] + 2 * THIS.borderWidth) + 'px';
+			p.wrap.style.height = (dims[1] + 2 * THIS.borderWidth) + 'px';
+			p.wrap.style.zIndex = THIS.zIndex;
+
+			// picker
+			p.box.style.width = dims[0] + 'px';
+			p.box.style.height = dims[1] + 'px';
+
+			p.boxS.style.position = 'absolute';
+			p.boxS.style.left = '0';
+			p.boxS.style.top = '0';
+			p.boxS.style.width = '100%';
+			p.boxS.style.height = '100%';
+			jsc.setBorderRadius(p.boxS, borderRadius + 'px');
+
+			// picker border
+			p.boxB.style.position = 'relative';
+			p.boxB.style.border = THIS.borderWidth + 'px solid';
+			p.boxB.style.borderColor = THIS.borderColor;
+			p.boxB.style.background = THIS.backgroundColor;
+			jsc.setBorderRadius(p.boxB, borderRadius + 'px');
+
+			// IE hack:
+			// If the element is transparent, IE will trigger the event on the elements under it,
+			// e.g. on Canvas or on elements with border
+			p.padM.style.background =
+			p.sldM.style.background =
+				'#FFF';
+			jsc.setStyle(p.padM, 'opacity', '0');
+			jsc.setStyle(p.sldM, 'opacity', '0');
+
+			// pad
+			p.pad.style.position = 'relative';
+			p.pad.style.width = THIS.width + 'px';
+			p.pad.style.height = THIS.height + 'px';
+
+			// pad palettes (HSV and HVS)
+			p.padPal.draw(THIS.width, THIS.height, jsc.getPadYComponent(THIS));
+
+			// pad border
+			p.padB.style.position = 'absolute';
+			p.padB.style.left = THIS.padding + 'px';
+			p.padB.style.top = THIS.padding + 'px';
+			p.padB.style.border = THIS.insetWidth + 'px solid';
+			p.padB.style.borderColor = THIS.insetColor;
+
+			// pad mouse area
+			p.padM._jscInstance = THIS;
+			p.padM._jscControlName = 'pad';
+			p.padM.style.position = 'absolute';
+			p.padM.style.left = '0';
+			p.padM.style.top = '0';
+			p.padM.style.width = (THIS.padding + 2 * THIS.insetWidth + THIS.width + padToSliderPadding / 2) + 'px';
+			p.padM.style.height = dims[1] + 'px';
+			p.padM.style.cursor = padCursor;
+
+			// pad cross
+			p.cross.style.position = 'absolute';
+			p.cross.style.left =
+			p.cross.style.top =
+				'0';
+			p.cross.style.width =
+			p.cross.style.height =
+				crossOuterSize + 'px';
+
+			// pad cross border Y and X
+			p.crossBY.style.position =
+			p.crossBX.style.position =
+				'absolute';
+			p.crossBY.style.background =
+			p.crossBX.style.background =
+				THIS.pointerBorderColor;
+			p.crossBY.style.width =
+			p.crossBX.style.height =
+				(2 * THIS.pointerBorderWidth + THIS.pointerThickness) + 'px';
+			p.crossBY.style.height =
+			p.crossBX.style.width =
+				crossOuterSize + 'px';
+			p.crossBY.style.left =
+			p.crossBX.style.top =
+				(Math.floor(crossOuterSize / 2) - Math.floor(THIS.pointerThickness / 2) - THIS.pointerBorderWidth) + 'px';
+			p.crossBY.style.top =
+			p.crossBX.style.left =
+				'0';
+
+			// pad cross line Y and X
+			p.crossLY.style.position =
+			p.crossLX.style.position =
+				'absolute';
+			p.crossLY.style.background =
+			p.crossLX.style.background =
+				THIS.pointerColor;
+			p.crossLY.style.height =
+			p.crossLX.style.width =
+				(crossOuterSize - 2 * THIS.pointerBorderWidth) + 'px';
+			p.crossLY.style.width =
+			p.crossLX.style.height =
+				THIS.pointerThickness + 'px';
+			p.crossLY.style.left =
+			p.crossLX.style.top =
+				(Math.floor(crossOuterSize / 2) - Math.floor(THIS.pointerThickness / 2)) + 'px';
+			p.crossLY.style.top =
+			p.crossLX.style.left =
+				THIS.pointerBorderWidth + 'px';
+
+			// slider
+			p.sld.style.overflow = 'hidden';
+			p.sld.style.width = THIS.sliderSize + 'px';
+			p.sld.style.height = THIS.height + 'px';
+
+			// slider gradient
+			p.sldGrad.draw(THIS.sliderSize, THIS.height, '#000', '#000');
+
+			// slider border
+			p.sldB.style.display = displaySlider ? 'block' : 'none';
+			p.sldB.style.position = 'absolute';
+			p.sldB.style.right = THIS.padding + 'px';
+			p.sldB.style.top = THIS.padding + 'px';
+			p.sldB.style.border = THIS.insetWidth + 'px solid';
+			p.sldB.style.borderColor = THIS.insetColor;
+
+			// slider mouse area
+			p.sldM._jscInstance = THIS;
+			p.sldM._jscControlName = 'sld';
+			p.sldM.style.display = displaySlider ? 'block' : 'none';
+			p.sldM.style.position = 'absolute';
+			p.sldM.style.right = '0';
+			p.sldM.style.top = '0';
+			p.sldM.style.width = (THIS.sliderSize + padToSliderPadding / 2 + THIS.padding + 2 * THIS.insetWidth) + 'px';
+			p.sldM.style.height = dims[1] + 'px';
+			p.sldM.style.cursor = 'default';
+
+			// slider pointer inner and outer border
+			p.sldPtrIB.style.border =
+			p.sldPtrOB.style.border =
+				THIS.pointerBorderWidth + 'px solid ' + THIS.pointerBorderColor;
+
+			// slider pointer outer border
+			p.sldPtrOB.style.position = 'absolute';
+			p.sldPtrOB.style.left = -(2 * THIS.pointerBorderWidth + THIS.pointerThickness) + 'px';
+			p.sldPtrOB.style.top = '0';
+
+			// slider pointer middle border
+			p.sldPtrMB.style.border = THIS.pointerThickness + 'px solid ' + THIS.pointerColor;
+
+			// slider pointer spacer
+			p.sldPtrS.style.width = THIS.sliderSize + 'px';
+			p.sldPtrS.style.height = sliderPtrSpace + 'px';
+
+			// the Close button
+			function setBtnBorder () {
+				var insetColors = THIS.insetColor.split(/\s+/);
+				var outsetColor = insetColors.length < 2 ? insetColors[0] : insetColors[1] + ' ' + insetColors[0] + ' ' + insetColors[0] + ' ' + insetColors[1];
+				p.btn.style.borderColor = outsetColor;
+			}
+			p.btn.style.display = THIS.closable ? 'block' : 'none';
+			p.btn.style.position = 'absolute';
+			p.btn.style.left = THIS.padding + 'px';
+			p.btn.style.bottom = THIS.padding + 'px';
+			p.btn.style.padding = '0 15px';
+			p.btn.style.height = THIS.buttonHeight + 'px';
+			p.btn.style.border = THIS.insetWidth + 'px solid';
+			setBtnBorder();
+			p.btn.style.color = THIS.buttonColor;
+			p.btn.style.font = '12px sans-serif';
+			p.btn.style.textAlign = 'center';
+			try {
+				p.btn.style.cursor = 'pointer';
+			} catch(eOldIE) {
+				p.btn.style.cursor = 'hand';
+			}
+			p.btn.onmousedown = function () {
+				THIS.hide();
+			};
+			p.btnT.style.lineHeight = THIS.buttonHeight + 'px';
+			p.btnT.innerHTML = '';
+			p.btnT.appendChild(document.createTextNode(THIS.closeText));
+
+			// place pointers
+			redrawPad();
+			redrawSld();
+
+			// If we are changing the owner without first closing the picker,
+			// make sure to first deal with the old owner
+			if (jsc.picker.owner && jsc.picker.owner !== THIS) {
+				jsc.unsetClass(jsc.picker.owner.targetElement, THIS.activeClass);
+			}
+
+			// Set the new picker owner
+			jsc.picker.owner = THIS;
+
+			// The redrawPosition() method needs picker.owner to be set, that's why we call it here,
+			// after setting the owner
+			if (jsc.isElementType(container, 'body')) {
+				jsc.redrawPosition();
+			} else {
+				jsc._drawPosition(THIS, 0, 0, 'relative', false);
+			}
+
+			if (p.wrap.parentNode != container) {
+				container.appendChild(p.wrap);
+			}
+
+			jsc.setClass(THIS.targetElement, THIS.activeClass);
+		}
+
+
+		function redrawPad () {
+			// redraw the pad pointer
+			switch (jsc.getPadYComponent(THIS)) {
+			case 's': var yComponent = 1; break;
+			case 'v': var yComponent = 2; break;
+			}
+			var x = Math.round((THIS.hsv[0] / 360) * (THIS.width - 1));
+			var y = Math.round((1 - THIS.hsv[yComponent] / 100) * (THIS.height - 1));
+			var crossOuterSize = (2 * THIS.pointerBorderWidth + THIS.pointerThickness + 2 * THIS.crossSize);
+			var ofs = -Math.floor(crossOuterSize / 2);
+			jsc.picker.cross.style.left = (x + ofs) + 'px';
+			jsc.picker.cross.style.top = (y + ofs) + 'px';
+
+			// redraw the slider
+			switch (jsc.getSliderComponent(THIS)) {
+			case 's':
+				var rgb1 = HSV_RGB(THIS.hsv[0], 100, THIS.hsv[2]);
+				var rgb2 = HSV_RGB(THIS.hsv[0], 0, THIS.hsv[2]);
+				var color1 = 'rgb(' +
+					Math.round(rgb1[0]) + ',' +
+					Math.round(rgb1[1]) + ',' +
+					Math.round(rgb1[2]) + ')';
+				var color2 = 'rgb(' +
+					Math.round(rgb2[0]) + ',' +
+					Math.round(rgb2[1]) + ',' +
+					Math.round(rgb2[2]) + ')';
+				jsc.picker.sldGrad.draw(THIS.sliderSize, THIS.height, color1, color2);
+				break;
+			case 'v':
+				var rgb = HSV_RGB(THIS.hsv[0], THIS.hsv[1], 100);
+				var color1 = 'rgb(' +
+					Math.round(rgb[0]) + ',' +
+					Math.round(rgb[1]) + ',' +
+					Math.round(rgb[2]) + ')';
+				var color2 = '#000';
+				jsc.picker.sldGrad.draw(THIS.sliderSize, THIS.height, color1, color2);
+				break;
+			}
+		}
+
+
+		function redrawSld () {
+			var sldComponent = jsc.getSliderComponent(THIS);
+			if (sldComponent) {
+				// redraw the slider pointer
+				switch (sldComponent) {
+				case 's': var yComponent = 1; break;
+				case 'v': var yComponent = 2; break;
+				}
+				var y = Math.round((1 - THIS.hsv[yComponent] / 100) * (THIS.height - 1));
+				jsc.picker.sldPtrOB.style.top = (y - (2 * THIS.pointerBorderWidth + THIS.pointerThickness) - Math.floor(sliderPtrSpace / 2)) + 'px';
+			}
+		}
+
+
+		function isPickerOwner () {
+			return jsc.picker && jsc.picker.owner === THIS;
+		}
+
+
+		function blurValue () {
+			THIS.importColor();
+		}
+
+
+		// Find the target element
+		if (typeof targetElement === 'string') {
+			var id = targetElement;
+			var elm = document.getElementById(id);
+			if (elm) {
+				this.targetElement = elm;
+			} else {
+				jsc.warn('Could not find target element with ID \'' + id + '\'');
+			}
+		} else if (targetElement) {
+			this.targetElement = targetElement;
+		} else {
+			jsc.warn('Invalid target element: \'' + targetElement + '\'');
+		}
+
+		if (this.targetElement._jscLinkedInstance) {
+			jsc.warn('Cannot link jscolor twice to the same element. Skipping.');
+			return;
+		}
+		this.targetElement._jscLinkedInstance = this;
+
+		// Find the value element
+		this.valueElement = jsc.fetchElement(this.valueElement);
+		// Find the style element
+		this.styleElement = jsc.fetchElement(this.styleElement);
+
+		var THIS = this;
+		var container =
+			this.container ?
+			jsc.fetchElement(this.container) :
+			document.getElementsByTagName('body')[0];
+		var sliderPtrSpace = 3; // px
+
+		// For BUTTON elements it's important to stop them from sending the form when clicked
+		// (e.g. in Safari)
+		if (jsc.isElementType(this.targetElement, 'button')) {
+			if (this.targetElement.onclick) {
+				var origCallback = this.targetElement.onclick;
+				this.targetElement.onclick = function (evt) {
+					origCallback.call(this, evt);
+					return false;
+				};
+			} else {
+				this.targetElement.onclick = function () { return false; };
+			}
+		}
+
+		/*
+		var elm = this.targetElement;
+		do {
+			// If the target element or one of its offsetParents has fixed position,
+			// then use fixed positioning instead
+			//
+			// Note: In Firefox, getComputedStyle returns null in a hidden iframe,
+			// that's why we need to check if the returned style object is non-empty
+			var currStyle = jsc.getStyle(elm);
+			if (currStyle && currStyle.position.toLowerCase() === 'fixed') {
+				this.fixed = true;
+			}
+
+			if (elm !== this.targetElement) {
+				// attach onParentScroll so that we can recompute the picker position
+				// when one of the offsetParents is scrolled
+				if (!elm._jscEventsAttached) {
+					jsc.attachEvent(elm, 'scroll', jsc.onParentScroll);
+					elm._jscEventsAttached = true;
+				}
+			}
+		} while ((elm = elm.offsetParent) && !jsc.isElementType(elm, 'body'));
+		*/
+
+		// valueElement
+		if (this.valueElement) {
+			if (jsc.isElementType(this.valueElement, 'input')) {
+				var updateField = function () {
+					THIS.fromString(THIS.valueElement.value, jsc.leaveValue);
+					jsc.dispatchFineChange(THIS);
+				};
+				jsc.attachEvent(this.valueElement, 'keyup', updateField);
+				jsc.attachEvent(this.valueElement, 'input', updateField);
+				jsc.attachEvent(this.valueElement, 'blur', blurValue);
+				this.valueElement.setAttribute('autocomplete', 'off');
+			}
+		}
+
+		// styleElement
+		if (this.styleElement) {
+			this.styleElement._jscOrigStyle = {
+				backgroundImage : this.styleElement.style.backgroundImage,
+				backgroundColor : this.styleElement.style.backgroundColor,
+				color : this.styleElement.style.color
+			};
+		}
+
+		if (this.value) {
+			// Try to set the color from the .value option and if unsuccessful,
+			// export the current color
+			this.fromString(this.value) || this.exportColor();
+		} else {
+			this.importColor();
+		}
+	}
+
+};
+
+
+//================================
+// Public properties and methods
+//================================
+
+
+// By default, search for all elements with class="jscolor" and install a color picker on them.
+//
+// You can change what class name will be looked for by setting the property jscolor.lookupClass
+// anywhere in your HTML document. To completely disable the automatic lookup, set it to null.
+//
+jsc.jscolor.lookupClass = 'jscolor';
+
+
+jsc.jscolor.installByClassName = function (className) {
+	var inputElms = document.getElementsByTagName('input');
+	var buttonElms = document.getElementsByTagName('button');
+
+	jsc.tryInstallOnElements(inputElms, className);
+	jsc.tryInstallOnElements(buttonElms, className);
+};
+
+
+jsc.register();
+
+
+return jsc.jscolor;
+
+
+})(); }
 
 ///#source 1 1 /Style Library/corp-dir/vendor/jQuery/jquery-1.12.4.min.js
 /*! jQuery v1.12.4 | (c) jQuery Foundation | jquery.org/license */
