@@ -5,7 +5,7 @@ This project is a Visual Studio 2013 Project that creates a SharePoint 2013/2016
 
 <h1>Documentation Coming Soon...</h1>
 
-<B>Update: 11/292016</B> - if you've downloaded this prior to this date you need to complete the following steps in order to upgrade.
+<B>Update: 11/29/2016</B> - if you've downloaded this prior to this date you need to complete the following steps in order to upgrade.
 1) delete the solution
 2) delete the web part from the gallery
 3) delete the web part from the search page
