@@ -11,7 +11,6 @@ This project is a Visual Studio 2013 Project that creates a SharePoint 2013/2016
 5) activate the new solution
 6) add the new web part to the search page
 
-<h1>Table of Contents</h1>
-<ul>
-<li><a href="https://github.com/tom-daly/corp-dir/wiki/Getting-Started">Getting Started</a></li>
-</ul>
+#How can I use this?#
+
+Please visit the <a href='https://github.com/tom-daly/corp-dir/wiki'>wiki</a> for instructions on how to install the solution, setup and configure the webpart. 
