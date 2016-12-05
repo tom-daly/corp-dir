@@ -21,7 +21,7 @@ Pre-Requisites
 <ul>
   <li>
     <div>Enterprise Search Center</div>
-    <div>the enterprise search center template has a people search component which we will use for the corporate directory.</div>
+    <p>the enterprise search center template has a people search component which we will use for the corporate directory.</p>
     <div><img width="400px" src='http://thomasdaly.net/wp-content/uploads/2016/12/ent-search-center.png'/></div>
   </li>
 </ul>
