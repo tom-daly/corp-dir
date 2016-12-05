@@ -30,10 +30,10 @@ Pre-Requisites
 Step 1: download the .WSP from here -> <a href='https://github.com/tom-daly/corp-dir/blob/master/WSP/CorpDir.SharePoint.wsp'>https://github.com/tom-daly/corp-dir/blob/master/WSP/CorpDir.SharePoint.wsp</a>
 
 Step 2: Navigate to the Enterprise Search Center
-<img src='http://thomasdaly.net/search-center-site/'/>
+<img src='http://thomasdaly.net/wp-content/uploads/2016/12/search-center-site.png'/>
 
 Step 3: Click on the Gear -> Site Settings
-<img src='http://thomasdaly.net/step3/'/>
+<img src='http://thomasdaly.net/wp-content/uploads/2016/12/step3.png/'/>
 
 Step 4: Click Solutions
-<img src='http://thomasdaly.net/step4/'/>
+<img src='http://thomasdaly.net/wp-content/uploads/2016/12/step4.png'/>
