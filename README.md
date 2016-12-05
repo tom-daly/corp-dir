@@ -19,11 +19,21 @@ This project is a Visual Studio 2013 Project that creates a SharePoint 2013/2016
 <h1 name="getting-started">Gettin Started</h1>
 Pre-Requisites 
 <ul>
+<li>Site Collection Admin Rights</li>
   <li>
-    <div>Enterprise Search Center</div>
-    <p>the enterprise search center template has a people search component which we will use for the corporate directory.</p>
+    <div>Enterprise Search Center - this template has a people search component which we will use for the corporate directory.
+    </div>
     <div><img width="400px" src='http://thomasdaly.net/wp-content/uploads/2016/12/ent-search-center.png'/></div>
   </li>
 </ul>
 
 Step 1: download the .WSP from here -> <a href='https://github.com/tom-daly/corp-dir/blob/master/WSP/CorpDir.SharePoint.wsp'>https://github.com/tom-daly/corp-dir/blob/master/WSP/CorpDir.SharePoint.wsp</a>
+
+Step 2: Navigate to the Enterprise Search Center
+<img src='http://thomasdaly.net/search-center-site/'/>
+
+Step 3: Click on the Gear -> Site Settings
+<img src='http://thomasdaly.net/step3/'/>
+
+Step 4: Click Solutions
+<img src='http://thomasdaly.net/step4/'/>
