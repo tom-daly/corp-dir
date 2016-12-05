@@ -27,23 +27,36 @@ Pre-Requisites
   </li>
 </ul>
 
-Step 1: download the .WSP from here -> <a href='https://github.com/tom-daly/corp-dir/blob/master/WSP/CorpDir.SharePoint.wsp'>https://github.com/tom-daly/corp-dir/blob/master/WSP/CorpDir.SharePoint.wsp</a>
+<b>Step 1:</b> download the .WSP from here -> <a href='https://github.com/tom-daly/corp-dir/blob/master/WSP/CorpDir.SharePoint.wsp'>https://github.com/tom-daly/corp-dir/blob/master/WSP/CorpDir.SharePoint.wsp</a>
 Click the 'Download' button
+<div>
 <img src='http://thomasdaly.net/wp-content/uploads/2016/12/download-corp-dir.png'/>
+</div>
 
-Step 2: Navigate to the Enterprise Search Center
+<b>Step 2:</b> Navigate to the Enterprise Search Center
+<div>
 <img src='http://thomasdaly.net/wp-content/uploads/2016/12/search-center-site.png'/>
+</div>
 
-Step 3: Click on the Gear -> Site Settings
+<b>Step 3:</b> Click on the Gear -> Site Settings
+<div>
 <img src='http://thomasdaly.net/wp-content/uploads/2016/12/step3.png'/>
+</div>
 
-Step 4: Click 'Solutions'
+<b>Step 4:</b> Click 'Solutions'
+<div>
 <img src='http://thomasdaly.net/wp-content/uploads/2016/12/step4.png'/>
+</div>
 
-Step 5: Click 'Upload Solution'
+<b>Step 5:</b> Click 'Upload Solution'
+<div>
 <img src='http://thomasdaly.net/wp-content/uploads/2016/12/step5.png'/>
+</div>
 
-Step 6: Click 'Browse' and location the .WSP that you've downloaded previously, then click 'OK'
+<b>Step 6:</b> Click 'Browse' and location the .WSP that you've downloaded previously, then click 'OK'
 
-Step 7: Click 'Activate'
+<b>Step 7:</b>Click 'Activate'
+<div>
 <img src='http://thomasdaly.net/wp-content/uploads/2016/12/step7.png'/>
+</div>
+
