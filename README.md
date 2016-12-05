@@ -28,12 +28,22 @@ Pre-Requisites
 </ul>
 
 Step 1: download the .WSP from here -> <a href='https://github.com/tom-daly/corp-dir/blob/master/WSP/CorpDir.SharePoint.wsp'>https://github.com/tom-daly/corp-dir/blob/master/WSP/CorpDir.SharePoint.wsp</a>
+Click the 'Download' button
+<img src='http://thomasdaly.net/wp-content/uploads/2016/12/download-corp-dir.png'/>
 
 Step 2: Navigate to the Enterprise Search Center
 <img src='http://thomasdaly.net/wp-content/uploads/2016/12/search-center-site.png'/>
 
 Step 3: Click on the Gear -> Site Settings
-<img src='http://thomasdaly.net/wp-content/uploads/2016/12/step3.png/'/>
+<img src='http://thomasdaly.net/wp-content/uploads/2016/12/step3.png'/>
 
-Step 4: Click Solutions
+Step 4: Click 'Solutions'
 <img src='http://thomasdaly.net/wp-content/uploads/2016/12/step4.png'/>
+
+Step 5: Click 'Upload Solution'
+<img src='http://thomasdaly.net/wp-content/uploads/2016/12/step5.png'/>
+
+Step 6: Click 'Browse' and location the .WSP that you've downloaded previously, then click 'OK'
+
+Step 7: Click 'Activate'
+<img src='http://thomasdaly.net/wp-content/uploads/2016/12/step7.png'/>
