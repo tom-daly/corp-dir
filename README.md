@@ -12,3 +12,11 @@ This project is a Visual Studio 2013 Project that creates a SharePoint 2013/2016
 4) install the new solution
 5) activate the new solution
 6) add the new web part to the search page
+
+<h1>Get Started</h1>
+Pre-Requisites 
+<ul>
+<li>Enterprise Search Center</li>
+</ul>
+
+Step 1: download the .WSP from here -> <a href='https://github.com/tom-daly/corp-dir/blob/master/WSP/CorpDir.SharePoint.wsp'>https://github.com/tom-daly/corp-dir/blob/master/WSP/CorpDir.SharePoint.wsp</a>
