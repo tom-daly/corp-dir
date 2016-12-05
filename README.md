@@ -20,7 +20,7 @@ This project is a Visual Studio 2013 Project that creates a SharePoint 2013/2016
 Pre-Requisites 
 <ul>
   <li>Enterprise Search Center
-    <img src='http://thomasdaly.net/wp-content/uploads/2016/12/ent-search-center.png'/>
+    <div><img width="100px" src='http://thomasdaly.net/wp-content/uploads/2016/12/ent-search-center.png'/></div>
   </li>
 </ul>
 
