@@ -14,3 +14,5 @@ This project is a Visual Studio 2013 Project that creates a SharePoint 2013/2016
 #How can I use this?#
 
 Please visit the <a href='https://github.com/tom-daly/corp-dir/wiki'>wiki</a> for instructions on how to install the solution, setup and configure the webpart. 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9xhXHE7tDhM" frameborder="0" allowfullscreen></iframe>
