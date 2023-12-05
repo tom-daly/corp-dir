@@ -1,3 +1,5 @@
+This project is no longer actively supported. Feel free to use this as an example but at this point I've moved on to new projects that require most of my time. 
+
 # Corporate Directory Controls for SharePoint 2013/2016 & Office 365
 This is a corporate directory type control for SharePoint 2013/2016 &amp; Office 365
 
